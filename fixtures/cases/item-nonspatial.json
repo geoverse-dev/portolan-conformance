@@ -1,0 +1,19 @@
+{
+  "id": "item-nonspatial",
+  "operation": "inspect",
+  "uri": "${CATALOGS}/basic/scenes/scene-1/b.json",
+  "tags": [
+    "metadata"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "type": "Feature",
+      "id": "b",
+      "title": null,
+      "description": null,
+      "stac_version": "1.1.0",
+      "stac_extensions": []
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "id": "a",
+  "collection": "scenes/scene-1",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -58.9,
+      -37.3
+    ]
+  },
+  "bbox": [
+    -58.9,
+    -37.3,
+    -58.9,
+    -37.3
+  ],
+  "properties": {
+    "datetime": "2024-01-01T00:00:00Z",
+    "custom:note": "áéíóú"
+  },
+  "assets": {
+    "cog": {
+      "href": "data/a.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "data"
+      ],
+      "title": "Scene A",
+      "description": "Raster",
+      "alternate": {
+        "s3": {
+          "href": "s3://example/a.tif"
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "collection",
+      "href": "collection.json",
+      "type": "application/json"
+    }
+  ]
+}

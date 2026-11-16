@@ -1,0 +1,28 @@
+{
+  "id": "assets-absolute",
+  "operation": "assets",
+  "uri": "${CATALOGS}/basic/scenes/scene-1/b.json",
+  "tags": [
+    "assets"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "key": "data",
+          "href": "https://example.org/b.parquet?download=1#part",
+          "resolved_href": "https://example.org/b.parquet?download=1#part",
+          "type": "application/vnd.apache.parquet",
+          "roles": [
+            "data",
+            "metadata"
+          ],
+          "title": "Data",
+          "description": "Tabular",
+          "extra_fields": {}
+        }
+      ]
+    }
+  }
+}

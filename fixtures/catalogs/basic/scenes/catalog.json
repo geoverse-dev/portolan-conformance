@@ -1,0 +1,38 @@
+{
+  "type": "Catalog",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json"
+  ],
+  "id": "scenes",
+  "title": "Imagery Scenes",
+  "description": "Thematic grouping",
+  "links": [
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "scene-1/collection.json",
+      "type": "application/json",
+      "title": "Scene Collection"
+    },
+    {
+      "rel": "describedby",
+      "href": "README.md",
+      "type": "text/markdown"
+    },
+    {
+      "rel": "agents",
+      "href": "AGENTS.md",
+      "type": "text/markdown"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "links-item",
+  "operation": "links",
+  "uri": "${CATALOGS}/basic/scenes/scene-1/a.json",
+  "tags": [
+    "links"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "rel": "collection",
+          "href": "collection.json",
+          "resolved_href": "${CATALOGS}/basic/scenes/scene-1/collection.json",
+          "type": "application/json",
+          "title": null,
+          "extra_fields": {}
+        },
+        {
+          "rel": "parent",
+          "href": "collection.json",
+          "resolved_href": "${CATALOGS}/basic/scenes/scene-1/collection.json",
+          "type": "application/json",
+          "title": null,
+          "extra_fields": {}
+        },
+        {
+          "rel": "root",
+          "href": "../../catalog.json",
+          "resolved_href": "${CATALOGS}/basic/catalog.json",
+          "type": "application/json",
+          "title": null,
+          "extra_fields": {}
+        }
+      ]
+    }
+  }
+}

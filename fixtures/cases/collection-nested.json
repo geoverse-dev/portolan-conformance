@@ -1,0 +1,21 @@
+{
+  "id": "collection-nested",
+  "operation": "inspect",
+  "uri": "${CATALOGS}/basic/scenes/scene-1/collection.json",
+  "tags": [
+    "metadata"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "type": "Collection",
+      "id": "scenes/scene-1",
+      "title": "Scene Collection",
+      "description": "Two image scenes",
+      "stac_version": "1.1.0",
+      "stac_extensions": [
+        "https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json"
+      ]
+    }
+  }
+}

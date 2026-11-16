@@ -1,0 +1,41 @@
+{
+  "id": "assets-collection",
+  "operation": "assets",
+  "uri": "${CATALOGS}/basic/roads/collection.json",
+  "tags": [
+    "assets"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "key": "preview",
+          "href": "https://example.org/preview.png",
+          "resolved_href": "https://example.org/preview.png",
+          "type": "image/png",
+          "roles": [
+            "thumbnail"
+          ],
+          "title": "Preview",
+          "description": "Image",
+          "extra_fields": {}
+        },
+        {
+          "key": "roads",
+          "href": "roads.parquet",
+          "resolved_href": "${CATALOGS}/basic/roads/roads.parquet",
+          "type": "application/vnd.apache.parquet",
+          "roles": [
+            "data"
+          ],
+          "title": "Road data",
+          "description": "Example only",
+          "extra_fields": {
+            "file:size": 123
+          }
+        }
+      ]
+    }
+  }
+}

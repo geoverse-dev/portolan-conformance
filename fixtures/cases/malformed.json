@@ -1,0 +1,14 @@
+{
+  "id": "malformed",
+  "operation": "inspect",
+  "uri": "${CATALOGS}/basic/broken.json",
+  "tags": [
+    "errors"
+  ],
+  "expected": {
+    "status": "error",
+    "error": {
+      "code": "INVALID_JSON"
+    }
+  }
+}

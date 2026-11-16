@@ -1,0 +1,23 @@
+{
+  "id": "items-two",
+  "operation": "items",
+  "uri": "${CATALOGS}/basic/scenes/scene-1/collection.json",
+  "tags": [
+    "navigation"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "id": "a",
+          "uri": "${CATALOGS}/basic/scenes/scene-1/a.json"
+        },
+        {
+          "id": "b",
+          "uri": "${CATALOGS}/basic/scenes/scene-1/b.json"
+        }
+      ]
+    }
+  }
+}

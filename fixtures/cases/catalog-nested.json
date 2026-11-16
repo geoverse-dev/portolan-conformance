@@ -1,0 +1,21 @@
+{
+  "id": "catalog-nested",
+  "operation": "inspect",
+  "uri": "${CATALOGS}/basic/scenes/catalog.json",
+  "tags": [
+    "metadata"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "type": "Catalog",
+      "id": "scenes",
+      "title": "Imagery Scenes",
+      "description": "Thematic grouping",
+      "stac_version": "1.1.0",
+      "stac_extensions": [
+        "https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json"
+      ]
+    }
+  }
+}

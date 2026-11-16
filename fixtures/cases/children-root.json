@@ -1,0 +1,23 @@
+{
+  "id": "children-root",
+  "operation": "children",
+  "uri": "${CATALOGS}/basic/catalog.json",
+  "tags": [
+    "navigation"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "id": "roads",
+          "uri": "${CATALOGS}/basic/roads/collection.json"
+        },
+        {
+          "id": "scenes",
+          "uri": "${CATALOGS}/basic/scenes/catalog.json"
+        }
+      ]
+    }
+  }
+}

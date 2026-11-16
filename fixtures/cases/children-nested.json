@@ -1,0 +1,19 @@
+{
+  "id": "children-nested",
+  "operation": "children",
+  "uri": "${CATALOGS}/basic/scenes/catalog.json",
+  "tags": [
+    "navigation"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "id": "scenes/scene-1",
+          "uri": "${CATALOGS}/basic/scenes/scene-1/collection.json"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "catalog-root",
+  "operation": "inspect",
+  "uri": "${CATALOGS}/basic/catalog.json",
+  "tags": [
+    "metadata"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "type": "Catalog",
+      "id": "tandil",
+      "title": "Tandil — Datos",
+      "description": "Catálogo de prueba con acentos y ñ",
+      "stac_version": "1.1.0",
+      "stac_extensions": [
+        "https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json"
+      ]
+    }
+  }
+}

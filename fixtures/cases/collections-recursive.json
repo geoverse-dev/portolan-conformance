@@ -1,0 +1,23 @@
+{
+  "id": "collections-recursive",
+  "operation": "collections",
+  "uri": "${CATALOGS}/basic/catalog.json",
+  "tags": [
+    "navigation"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "id": "roads",
+          "uri": "${CATALOGS}/basic/roads/collection.json"
+        },
+        {
+          "id": "scenes/scene-1",
+          "uri": "${CATALOGS}/basic/scenes/scene-1/collection.json"
+        }
+      ]
+    }
+  }
+}

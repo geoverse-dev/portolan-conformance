@@ -1,0 +1,84 @@
+{
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json"
+  ],
+  "id": "roads",
+  "title": "Road Network",
+  "description": "Roads in the area",
+  "license": "CC-BY-4.0",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -59,
+          -38,
+          -58,
+          -37
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "providers": [
+    {
+      "name": "Test publisher",
+      "roles": [
+        "producer",
+        "host"
+      ],
+      "url": "https://example.org"
+    }
+  ],
+  "assets": {
+    "roads": {
+      "href": "roads.parquet",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "title": "Road data",
+      "description": "Example only",
+      "file:size": 123
+    },
+    "preview": {
+      "href": "https://example.org/preview.png",
+      "type": "image/png",
+      "roles": [
+        "thumbnail"
+      ],
+      "title": "Preview",
+      "description": "Image"
+    }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "describedby",
+      "href": "README.md",
+      "type": "text/markdown"
+    },
+    {
+      "rel": "agents",
+      "href": "AGENTS.md",
+      "type": "text/markdown"
+    }
+  ]
+}

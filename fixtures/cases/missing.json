@@ -1,0 +1,14 @@
+{
+  "id": "missing",
+  "operation": "inspect",
+  "uri": "${CATALOGS}/basic/missing.json",
+  "tags": [
+    "errors"
+  ],
+  "expected": {
+    "status": "error",
+    "error": {
+      "code": "NOT_FOUND"
+    }
+  }
+}

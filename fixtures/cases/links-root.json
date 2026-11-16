@@ -1,0 +1,55 @@
+{
+  "id": "links-root",
+  "operation": "links",
+  "uri": "${CATALOGS}/basic/catalog.json",
+  "tags": [
+    "links"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "rel": "agents",
+          "href": "AGENTS.md",
+          "resolved_href": "${CATALOGS}/basic/AGENTS.md",
+          "type": "text/markdown",
+          "title": null,
+          "extra_fields": {}
+        },
+        {
+          "rel": "child",
+          "href": "roads/collection.json",
+          "resolved_href": "${CATALOGS}/basic/roads/collection.json",
+          "type": "application/json",
+          "title": "Road Network",
+          "extra_fields": {}
+        },
+        {
+          "rel": "child",
+          "href": "scenes/catalog.json",
+          "resolved_href": "${CATALOGS}/basic/scenes/catalog.json",
+          "type": "application/json",
+          "title": "Imagery Scenes",
+          "extra_fields": {}
+        },
+        {
+          "rel": "describedby",
+          "href": "README.md",
+          "resolved_href": "${CATALOGS}/basic/README.md",
+          "type": "text/markdown",
+          "title": null,
+          "extra_fields": {}
+        },
+        {
+          "rel": "root",
+          "href": "./catalog.json",
+          "resolved_href": "${CATALOGS}/basic/catalog.json",
+          "type": "application/json",
+          "title": null,
+          "extra_fields": {}
+        }
+      ]
+    }
+  }
+}

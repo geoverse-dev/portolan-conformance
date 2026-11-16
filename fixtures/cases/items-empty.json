@@ -1,0 +1,14 @@
+{
+  "id": "items-empty",
+  "operation": "items",
+  "uri": "${CATALOGS}/basic/roads/collection.json",
+  "tags": [
+    "navigation"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": []
+    }
+  }
+}

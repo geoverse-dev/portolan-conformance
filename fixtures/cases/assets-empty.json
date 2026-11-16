@@ -1,0 +1,14 @@
+{
+  "id": "assets-empty",
+  "operation": "assets",
+  "uri": "${CATALOGS}/basic/catalog.json",
+  "tags": [
+    "assets"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": []
+    }
+  }
+}

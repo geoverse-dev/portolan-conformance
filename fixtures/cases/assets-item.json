@@ -1,0 +1,33 @@
+{
+  "id": "assets-item",
+  "operation": "assets",
+  "uri": "${CATALOGS}/basic/scenes/scene-1/a.json",
+  "tags": [
+    "assets"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "key": "cog",
+          "href": "data/a.tif",
+          "resolved_href": "${CATALOGS}/basic/scenes/scene-1/data/a.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Scene A",
+          "description": "Raster",
+          "extra_fields": {
+            "alternate": {
+              "s3": {
+                "href": "s3://example/a.tif"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

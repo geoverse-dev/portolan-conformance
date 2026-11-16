@@ -1,0 +1,20 @@
+name: Test conformance harness
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e '.[test]'
+      - run: pytest -q
+      - run: portolan-conformance run --adapter 'python -m portolan_conformance.reference_adapter' --report report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: conformance-selftest-report
+          path: report.json
