@@ -6,8 +6,16 @@ build-backend = "setuptools.build_meta"
 name = "portolan-conformance"
 version = "0.1.0"
 description = "Language-neutral read-only SDK behavior conformance tests for Portolan"
+readme = "README.md"
 requires-python = ">=3.11"
+license = "Apache-2.0"
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/geoverse-dev/portolan-conformance"
+Repository = "https://github.com/geoverse-dev/portolan-conformance"
+Documentation = "https://github.com/geoverse-dev/portolan-conformance/tree/v0.1.0/docs"
+Issues = "https://github.com/geoverse-dev/portolan-conformance/issues"
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]
@@ -17,6 +25,23 @@ portolan-conformance = "portolan_conformance.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.data-files]
+"share/portolan-conformance/fixtures/cases" = ["fixtures/cases/*.json"]
+"share/portolan-conformance/fixtures/catalogs/basic" = ["fixtures/catalogs/basic/*.json", "fixtures/catalogs/basic/*.md"]
+"share/portolan-conformance/fixtures/catalogs/basic/roads" = ["fixtures/catalogs/basic/roads/*.json", "fixtures/catalogs/basic/roads/*.md"]
+"share/portolan-conformance/fixtures/catalogs/basic/scenes" = ["fixtures/catalogs/basic/scenes/*.json", "fixtures/catalogs/basic/scenes/*.md"]
+"share/portolan-conformance/fixtures/catalogs/basic/scenes/scene-1" = ["fixtures/catalogs/basic/scenes/scene-1/*.json", "fixtures/catalogs/basic/scenes/scene-1/*.md"]
+"share/portolan-conformance/fixtures/validation" = ["fixtures/validation/*.json"]
+"share/portolan-conformance/fixtures/validation/cases" = ["fixtures/validation/cases/*.json"]
+"share/portolan-conformance/fixtures/validation/catalogs/missing-profile" = ["fixtures/validation/catalogs/missing-profile/*.json"]
+"share/portolan-conformance/fixtures/validation/catalogs/unknown-profile" = ["fixtures/validation/catalogs/unknown-profile/*.json"]
+"share/portolan-conformance/fixtures/validation/catalogs/v02-missing-title" = ["fixtures/validation/catalogs/v02-missing-title/*.json"]
+"share/portolan-conformance/fixtures/validation/catalogs/v02-s3-alternate" = ["fixtures/validation/catalogs/v02-s3-alternate/*.json"]
+"share/portolan-conformance/fixtures/validation/catalogs/v02-valid" = ["fixtures/validation/catalogs/v02-valid/*.json"]
+"share/portolan-conformance/fixtures/validation/catalogs/v03-missing-title" = ["fixtures/validation/catalogs/v03-missing-title/*.json"]
+"share/portolan-conformance/fixtures/validation/catalogs/v03-s3-alternate" = ["fixtures/validation/catalogs/v03-s3-alternate/*.json"]
+"share/portolan-conformance/fixtures/validation/catalogs/v03-valid" = ["fixtures/validation/catalogs/v03-valid/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

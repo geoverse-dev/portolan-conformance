@@ -1,6 +1,6 @@
 # portolan-conformance
 
-**Read-only behavioral contract for Portolan SDKs** (Python, Java, Go, Rust).
+Behavioral contracts for native Portolan SDKs in Python, Java, Go, and Rust.
 
 This repository is **not** a Portolan validator and **does not depend on portolan-cli**.
 The normative specification is external: https://github.com/portolan-sdi/portolan-spec.
@@ -28,7 +28,12 @@ One process per request; a single UTF-8 JSON object on stdin and a single JSON o
 
 Success: `{"status":"ok","result":{...}}`. Domain error: `{"status":"error","error":{"code":"NOT_FOUND"}}`.
 
-All operations and field schemas are defined in [docs/SDK_IMPLEMENTATION_SPEC.md](docs/SDK_IMPLEMENTATION_SPEC.md). Array ordering rules are explicit; no undocumented normalization.
+All operations and field schemas are defined in [SDK Read Profile v1](docs/sdk-implementation-spec.md). Array ordering rules are explicit; no undocumented normalization.
+
+The [Metadata Validation Profile](docs/metadata-validation-profile.md) defines a separate metadata-only contract.
+It covers version-specific Portolan 0.2 and 0.3 behavior.
+
+[Known SDKs](docs/known-sdks.md) lists current implementations and their conformance commands.
 
 ## Scope and limitations
 

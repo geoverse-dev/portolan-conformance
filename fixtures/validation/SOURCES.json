@@ -1,0 +1,20 @@
+{
+  "portolan_spec": {
+    "repository": "https://github.com/portolan-sdi/portolan-spec",
+    "commit": "f758c6e5ec05e411a19a276251bbbe3b8ba53916"
+  },
+  "schemas": {
+    "0.2.0": {
+      "uri": "https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json",
+      "sha256": "8aabde871a72dcee711dc57d439e0f47dc29b30883513571128125c666723a7a"
+    },
+    "0.3.0": {
+      "uri": "https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json",
+      "sha256": "1bfeba20dd5b2069dfc8029b9eb720ac6828303b155fe97aed7aff0e87880b66"
+    }
+  },
+  "rashid": {
+    "version": "0.4.0",
+    "verification_command": "uvx --from rashid==0.4.0 rashid check CATALOG --no-data --schema --json"
+  }
+}

@@ -1,0 +1,1 @@
+{"id":"metadata-v03-missing-title","operation":"validate_metadata","uri":"${CATALOGS}/v03-missing-title/catalog.json","tags":["metadata-validation","0.3","negative"],"expected":{"status":"ok","result":{"profile_version":"1","spec_version":"0.3.0","valid":false,"errors":["PTL-TTL-001"],"warnings":[]}}}

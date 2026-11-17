@@ -1,0 +1,1 @@
+{"id":"metadata-unknown-profile","operation":"validate_metadata","uri":"${CATALOGS}/unknown-profile/catalog.json","tags":["metadata-validation","unknown-profile","negative"],"expected":{"status":"error","error":{"code":"UNSUPPORTED_PROFILE"}}}
