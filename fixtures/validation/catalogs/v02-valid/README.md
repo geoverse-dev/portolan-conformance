@@ -1,1 +1,1 @@
-# Version 0.2 catalog
+# Version 0.2.0 catalog

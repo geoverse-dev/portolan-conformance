@@ -1,1 +1,1 @@
-{"id":"metadata-v02-valid","operation":"validate_metadata","uri":"${CATALOGS}/v02-valid/catalog.json","tags":["metadata-validation","0.2","positive","smoke"],"expected":{"status":"ok","result":{"profile_version":"1","spec_version":"0.2.0","valid":true,"errors":[],"warnings":[]}}}
+{"id":"metadata-v02-valid","operation":"validate_metadata","uri":"${CATALOGS}/v02-valid/catalog.json","tags":["metadata-validation","0.2.0","positive","smoke"],"expected":{"status":"ok","result":{"profile_version":"1","spec_version":"0.2.0","valid":true,"errors":[],"warnings":[]}}}

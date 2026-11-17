@@ -65,7 +65,7 @@ def test_array_order_is_not_normalized():
 
 def test_metadata_validation_cases_have_version_matrix():
     cases = load_cases(ROOT / "fixtures/validation/cases")
-    assert {"0.2", "0.3", "missing-profile", "unknown-profile"}.issubset(
+    assert {"0.2.0", "0.3.0", "missing-profile", "unknown-profile"}.issubset(
         {tag for case in cases for tag in case.tags}
     )
     assert all(case.operation == METADATA_VALIDATION_OPERATION for case in cases)

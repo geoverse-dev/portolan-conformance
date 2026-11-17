@@ -70,12 +70,12 @@ Read errors use the error codes from the Read Profile adapter protocol.
 ## Version behavior
 
 The implementation selects rules from the root catalog's Portolan schema URI.
-It must not apply 0.3 rules to a 0.2 catalog.
+It must not apply 0.3.0 rules to a 0.2.0 catalog.
 
 The fixtures include one explicit version difference.
-Portolan 0.2 requires an absolute asset HREF to use HTTPS.
-Portolan 0.3 permits another scheme when the asset has an HTTPS alternate.
-The 0.3 form still produces the `PTL-AST-002` warning.
+Portolan 0.2.0 requires an absolute asset HREF to use HTTPS.
+Portolan 0.3.0 permits another scheme when the asset has an HTTPS alternate.
+The 0.3.0 form still produces the `PTL-AST-002` warning.
 
 A missing declaration produces `PTL-CNF-001` and a null `spec_version`.
 An unknown version produces `UNSUPPORTED_PROFILE`.
@@ -101,7 +101,7 @@ portolan-conformance run \
 ## Fixture provenance
 
 [`fixtures/validation/SOURCES.json`](../fixtures/validation/SOURCES.json) pins the specification and validator references.
-The positive 0.2 and 0.3 fixtures pass the schema and metadata checks in `rashid` 0.4.0.
+The positive 0.2.0 and 0.3.0 fixtures pass the schema and metadata checks in `rashid` 0.4.0.
 The version-difference fixtures isolate behavior that changed between the two schemas.
 
 Add a positive and a negative fixture before claiming coverage for another rule.

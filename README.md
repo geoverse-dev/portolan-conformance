@@ -37,7 +37,7 @@ Success: `{"status":"ok","result":{...}}`. Domain error: `{"status":"error","err
 All operations and field schemas are defined in [SDK Read Profile v1](docs/sdk-implementation-spec.md). Array ordering rules are explicit; no undocumented normalization.
 
 The [Metadata Validation Profile](docs/metadata-validation-profile.md) defines a separate metadata-only contract.
-It covers version-specific Portolan 0.2 and 0.3 behavior.
+It covers version-specific Portolan 0.2.0 and 0.3.0 behavior.
 
 [Known SDKs](docs/known-sdks.md) lists current implementations and their conformance commands.
 

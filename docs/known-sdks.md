@@ -22,7 +22,7 @@ Use [`rashid`](https://github.com/portolan-sdi/rashid) to validate a catalog.
 ## Validate portolan-python
 
 Install the SDK development dependencies.
-The Make target downloads `portolan-conformance` version `v0.1.0` with `uvx`.
+The Make target downloads `portolan-conformance` version `v0.1.1` with `uvx`.
 Then it runs:
 
 ```bash
@@ -48,7 +48,7 @@ make check-conformance \
 ## Validate portolan-java
 
 Install Java 17 and Maven.
-The Make target downloads `portolan-conformance` version `v0.1.0` with `uvx`.
+The Make target downloads `portolan-conformance` version `v0.1.1` with `uvx`.
 Then it runs:
 
 ```bash

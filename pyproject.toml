@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "portolan-conformance"
-version = "0.1.0"
+version = "0.1.1"
 description = "Language-neutral read-only SDK behavior conformance tests for Portolan"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -14,7 +14,7 @@ dependencies = []
 [project.urls]
 Homepage = "https://github.com/geoverse-dev/portolan-conformance"
 Repository = "https://github.com/geoverse-dev/portolan-conformance"
-Documentation = "https://github.com/geoverse-dev/portolan-conformance/tree/v0.1.0/docs"
+Documentation = "https://github.com/geoverse-dev/portolan-conformance/tree/v0.1.1/docs"
 Issues = "https://github.com/geoverse-dev/portolan-conformance/issues"
 
 [project.optional-dependencies]
