@@ -12,7 +12,7 @@ Each SDK pins a conformance revision in its own CI workflow.
 
 | SDK | Read Profile v1 | Metadata Validation Profile v1 | Local command |
 |---|---|---|---|
-| `portolan-python` | Pass | Not implemented | `make check-conformance` |
+| `portolan-python` | Pass | Not implemented; use Rashid | `make check-conformance` |
 | `portolan-java` | Pass | Pass for the initial fixture matrix | `make check-conformance` |
 
 A profile pass applies only to the cases in the pinned conformance revision.
@@ -31,6 +31,11 @@ make check-conformance
 
 The target runs Read Profile v1 through `tests/conformance_adapter.py`.
 It writes `read-profile-report.json` in the repository root.
+
+The 25 passing cases verify read behavior only.
+They do not validate a catalog against the Portolan specification.
+Python applications use Rashid for normative validation.
+`portolan-python` does not duplicate Rashid's rules.
 
 Override the runner or report path when required:
 
