@@ -16,6 +16,12 @@ pytest -q
 portolan-conformance run --adapter 'python -m portolan_conformance.reference_adapter' --report report.json
 ```
 
+With `uv` installed, run all repository checks without activating an environment:
+
+```bash
+make check
+```
+
 The included `reference_adapter` is a **harness self-test only** and is not an SDK or normative oracle. It supports local fixtures only. Actual SDK adapters belong in their own SDK repositories.
 
 ## Adapter contract

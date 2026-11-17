@@ -1,23 +1,21 @@
 .PHONY: help setup test check check-reference
 
-PYTHON ?= python
-PYTEST ?= pytest
-CONFORMANCE ?= portolan-conformance
+UV ?= uv
 REFERENCE_REPORT ?= report.json
 
 help:
 	@printf '%s\n' 'Targets: setup test check check-reference'
 
 setup:
-	$(PYTHON) -m pip install -e '.[test]'
+	$(UV) sync --extra test
 
 test:
-	$(PYTEST) -q
+	$(UV) run --extra test pytest -q
 
 check-reference:
-	$(CONFORMANCE) run \
+	$(UV) run --extra test portolan-conformance run \
 		--profile read \
-		--adapter '$(PYTHON) -m portolan_conformance.reference_adapter' \
+		--adapter '$(UV) run python -m portolan_conformance.reference_adapter' \
 		--report '$(REFERENCE_REPORT)'
 
 check: test check-reference
