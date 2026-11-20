@@ -1,6 +1,6 @@
 # portolan-conformance
 
-Behavioral contracts for native Portolan SDKs in Python, Java, Go, and Rust.
+Behavioral contracts for native Portolan SDKs in Python and Java.
 
 This repository is **not** a Portolan validator and **does not depend on portolan-cli**.
 The normative specification is external: https://github.com/portolan-sdi/portolan-spec.
