@@ -1,0 +1,77 @@
+{
+  "id": "W21",
+  "operation": "edit_plan",
+  "tags": [
+    "write",
+    "round-2"
+  ],
+  "input": {
+    "graph": {
+      "spec_version": "0.3.0",
+      "documents": [
+        {
+          "key": "catalog.json",
+          "document": {
+            "type": "Catalog",
+            "stac_version": "1.1.0",
+            "id": "demo",
+            "title": "Demo",
+            "description": "Before"
+          }
+        },
+        {
+          "key": "roads/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "roads",
+            "title": "Roads",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {
+              "spatial": {
+                "bbox": [
+                  [
+                    -59,
+                    -38,
+                    -58,
+                    -37
+                  ]
+                ]
+              },
+              "temporal": {
+                "interval": [
+                  [
+                    null,
+                    null
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "key_prefix": "exports/v2"
+  },
+  "expected": {
+    "status": "ok",
+    "result": {
+      "profile_version": "1",
+      "spec_version": "0.3.0",
+      "operations": [
+        {
+          "kind": "put",
+          "key": "exports/v2/catalog.json",
+          "content": "{\"description\":\"Before\",\"id\":\"demo\",\"links\":[{\"href\":\"roads/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Demo\",\"type\":\"Catalog\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "exports/v2/roads/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{\"spatial\":{\"bbox\":[[-59,-38,-58,-37]]},\"temporal\":{\"interval\":[[null,null]]}},\"id\":\"roads\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Roads\",\"type\":\"Collection\"}\n"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "W19",
+  "operation": "edit_plan",
+  "tags": [
+    "write",
+    "round-2"
+  ],
+  "input": {
+    "graph": {
+      "spec_version": "0.3.0",
+      "documents": [
+        {
+          "key": "catalog.json",
+          "document": {
+            "type": "Catalog",
+            "stac_version": "1.1.0",
+            "id": "demo",
+            "title": "Demo",
+            "description": "Before"
+          }
+        }
+      ]
+    },
+    "prior_managed_keys": [
+      "catalog.json"
+    ]
+  },
+  "expected": {
+    "status": "ok",
+    "result": {
+      "profile_version": "1",
+      "spec_version": "0.3.0",
+      "operations": [
+        {
+          "kind": "put",
+          "key": "catalog.json",
+          "content": "{\"description\":\"Before\",\"id\":\"demo\",\"links\":[{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Demo\",\"type\":\"Catalog\"}\n"
+        }
+      ]
+    }
+  }
+}

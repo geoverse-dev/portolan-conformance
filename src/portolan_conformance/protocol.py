@@ -10,6 +10,8 @@ from typing import Any
 PROTOCOL_VERSION = "1"
 METADATA_VALIDATION_OPERATION = "validate_metadata"
 WRITE_OPERATION = "plan_write"
+EDIT_OPERATION = "edit_plan"
+ROUNDTRIP_OPERATION = "roundtrip"
 READ_OPERATIONS = frozenset(
     {
         "inspect",
@@ -22,7 +24,12 @@ READ_OPERATIONS = frozenset(
         "links",
     }
 )
-OPERATIONS = READ_OPERATIONS | {METADATA_VALIDATION_OPERATION, WRITE_OPERATION}
+OPERATIONS = READ_OPERATIONS | {
+    METADATA_VALIDATION_OPERATION,
+    WRITE_OPERATION,
+    EDIT_OPERATION,
+    ROUNDTRIP_OPERATION,
+}
 VALIDATION_PROFILE_VERSION = "1"
 WRITE_PROFILE_VERSION = "1"
 
@@ -47,10 +54,11 @@ class Case:
             raise ValueError(f"{path}: unsupported operation {data['operation']}")
         uri = data.get("uri")
         input_value = data.get("input")
-        if data["operation"] == WRITE_OPERATION:
+        if data["operation"] in {WRITE_OPERATION, EDIT_OPERATION, ROUNDTRIP_OPERATION}:
             if not isinstance(input_value, dict) or uri is not None:
                 raise ValueError(f"{path}: write cases require input and no uri")
-            validate_write_response(data["expected"])
+            if data["operation"] == WRITE_OPERATION:
+                validate_write_response(data["expected"])
         elif not isinstance(uri, str) or input_value is not None:
             raise ValueError(f"{path}: read cases require uri and no input")
         if data["operation"] == METADATA_VALIDATION_OPERATION:

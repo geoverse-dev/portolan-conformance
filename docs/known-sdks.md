@@ -10,9 +10,9 @@ Each SDK pins a conformance revision in its own CI workflow.
 
 ## SDK status
 
-| SDK | Read Profile v1 | Write Profile v1 Round 1 | Metadata Validation Profile v1 | Local command |
+| SDK | Read Profile v1 | Write Profile v1 | Metadata Validation Profile v1 | Local command |
 |---|---|---|---|---|
-| `portolan-python` | Pass | Pass on the development branch | Not implemented; use Rashid | `make check-conformance` |
+| `portolan-python` | Pass | Pass through Round 2 on the development branch | Not implemented; use Rashid | `make check-conformance` |
 | `portolan-java` | Pass | Not implemented | Pass for the initial fixture matrix | `make check-conformance` |
 
 A profile pass applies only to the cases in the pinned conformance revision.
@@ -33,7 +33,8 @@ The released target runs Read Profile v1 through `tests/conformance_adapter.py`.
 The development branch adds `make check-conformance-write` for Write Profile v1 Round 1.
 It writes `write-profile-report.json`.
 
-The development read profile has 29 cases, and the first write round has 15 cases.
+The development read profile has 29 cases.
+The write profile has 26 cases through Round 2.
 The new read cases cover nested collection items, redirects, and strict JSON types.
 Neither profile validates a catalog against the Portolan specification.
 Python applications use Rashid for normative validation.

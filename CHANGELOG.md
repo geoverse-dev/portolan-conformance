@@ -7,6 +7,7 @@
 - Distinguish direct and recursive item discovery in the Read Profile.
 - Resolve relative links against the final URL after an HTTP redirect.
 - Compare JSON booleans and numbers as distinct types.
+- Add Round 2 edit, safe deletion, export, and round-trip cases W16–W22 and R01–R04.
 
 ## 0.1.1 — 2026-11-17
 

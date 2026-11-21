@@ -11,7 +11,7 @@ The fixture source record is in `fixtures/writing/SOURCES.json`.
 
 The adapter imports a language-neutral catalog graph and calls the SDK authoring API.
 The SDK returns a deterministic `WritePlan` with relative POSIX keys and UTF-8 content.
-Round 1 permits PUT operations only.
+New catalog plans contain PUT operations only.
 
 The plan has no destination and performs no I/O.
 The caller decides whether and where to materialize it.
@@ -19,6 +19,10 @@ The profile does not inspect or copy geospatial asset bytes.
 
 Cases W01–W15 cover root and nested catalogs, collections, items, assets,
 documentation, unknown fields, deterministic serialization, and preflight errors.
+
+Round 2 adds W16–W22 and R01–R04. These cases cover copy-on-write edits,
+document and asset changes, output prefixes, explicit managed deletions, and round trips.
+DELETE operations require `prior_managed_keys`; the planner never scans a destination.
 
 ## Adapter request
 

@@ -165,16 +165,30 @@ def test_cli_selects_metadata_validation_profile(monkeypatch):
 
 
 def test_write_profile_round_one_has_complete_case_matrix():
-    cases = load_cases(ROOT / "fixtures/writing/cases")
+    cases = [
+        case
+        for case in load_cases(ROOT / "fixtures/writing/cases")
+        if case.id.startswith("W") and int(case.id[1:]) <= 15
+    ]
 
     assert [case.id for case in cases] == [f"W{number:02d}" for number in range(1, 16)]
     assert all(case.operation == WRITE_OPERATION for case in cases)
     assert all(case.input is not None for case in cases)
 
 
+def test_write_profile_round_two_has_complete_case_matrix():
+    cases = load_cases(ROOT / "fixtures/writing/cases")
+    by_id = {case.id: case for case in cases}
+
+    assert all(case_id in by_id for case_id in [f"W{number:02d}" for number in range(16, 23)])
+    assert all(case_id in by_id for case_id in [f"R{number:02d}" for number in range(1, 5)])
+    assert all(by_id[case_id].input is not None for case_id in by_id if case_id[0] in {"W", "R"})
+
+
 def test_write_profile_expected_responses_have_valid_shape():
     for case in load_cases(ROOT / "fixtures/writing/cases"):
-        validate_write_response(case.expected)
+        if case.operation == WRITE_OPERATION:
+            validate_write_response(case.expected)
 
 
 def test_write_response_rejects_unsafe_or_unsorted_operations():
