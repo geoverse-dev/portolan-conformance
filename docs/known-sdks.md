@@ -13,7 +13,7 @@ Each SDK pins a conformance revision in its own CI workflow.
 | SDK | Read Profile v1 | Write Profile v1 | Metadata Validation Profile v1 | Local command |
 |---|---|---|---|---|
 | `portolan-python` | Pass | Pass through Round 3 on the development branch | Not implemented; use Rashid | `make check-conformance` |
-| `portolan-java` | Pass | Not implemented | Pass for the initial fixture matrix | `make check-conformance` |
+| `portolan-java` | Pass | Pass through Round 3 on the development branch | Pass for the initial fixture matrix | `make check-conformance` |
 
 A profile pass applies only to the cases in the pinned conformance revision.
 It does not prove full Portolan catalog conformance.
