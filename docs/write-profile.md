@@ -24,6 +24,10 @@ Round 2 adds W16–W22 and R01–R04. These cases cover copy-on-write edits,
 document and asset changes, output prefixes, explicit managed deletions, and round trips.
 DELETE operations require `prior_managed_keys`; the planner never scans a destination.
 
+Round 3 adds W23–W30 and R05–R07. These cases cover malformed metadata,
+duplicate links, JSON value fidelity, href edge cases, larger graphs, repeated planning,
+serialization failures, documentation preservation, and read-profile regression.
+
 ## Adapter request
 
 The adapter receives one JSON object on standard input:

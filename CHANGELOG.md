@@ -8,6 +8,7 @@
 - Resolve relative links against the final URL after an HTTP redirect.
 - Compare JSON booleans and numbers as distinct types.
 - Add Round 2 edit, safe deletion, export, and round-trip cases W16–W22 and R01–R04.
+- Add Round 3 hardening and fidelity cases W23–W30 and R05–R07.
 
 ## 0.1.1 — 2026-11-17
 

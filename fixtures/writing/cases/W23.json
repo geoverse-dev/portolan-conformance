@@ -1,0 +1,30 @@
+{
+  "id": "W23",
+  "operation": "edit_plan",
+  "tags": [
+    "write",
+    "round-3"
+  ],
+  "input": {
+    "graph": {
+      "spec_version": "0.3.0",
+      "documents": [
+        {
+          "key": "catalog.json",
+          "document": {
+            "type": "Catalog",
+            "stac_version": "1.1.0",
+            "id": "demo",
+            "description": "Missing title"
+          }
+        }
+      ]
+    }
+  },
+  "expected": {
+    "status": "error",
+    "error": {
+      "code": "MISSING_REQUIRED_METADATA"
+    }
+  }
+}

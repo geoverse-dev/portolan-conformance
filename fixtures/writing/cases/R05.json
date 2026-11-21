@@ -1,0 +1,75 @@
+{
+  "id": "R05",
+  "operation": "roundtrip",
+  "tags": [
+    "write",
+    "round-3"
+  ],
+  "input": {
+    "graph": {
+      "spec_version": "0.3.0",
+      "documents": [
+        {
+          "key": "catalog.json",
+          "document": {
+            "type": "Catalog",
+            "stac_version": "1.1.0",
+            "id": "demo",
+            "title": "Demo",
+            "description": "Catalog",
+            "x-vendor": {
+              "nested": {
+                "unicode": "\u00e1",
+                "null": null,
+                "values": [
+                  true,
+                  1,
+                  1.5
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "expected": {
+    "status": "ok",
+    "result": {
+      "profile_version": "1",
+      "documents": [
+        {
+          "key": "catalog.json",
+          "document": {
+            "description": "Catalog",
+            "id": "demo",
+            "links": [
+              {
+                "href": "catalog.json",
+                "rel": "self",
+                "type": "application/json"
+              }
+            ],
+            "stac_extensions": [
+              "https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json"
+            ],
+            "stac_version": "1.1.0",
+            "title": "Demo",
+            "type": "Catalog",
+            "x-vendor": {
+              "nested": {
+                "null": null,
+                "unicode": "\u00e1",
+                "values": [
+                  true,
+                  1,
+                  1.5
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

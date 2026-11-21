@@ -1,0 +1,399 @@
+{
+  "id": "W28",
+  "operation": "edit_plan",
+  "tags": [
+    "write",
+    "round-3"
+  ],
+  "input": {
+    "graph": {
+      "spec_version": "0.3.0",
+      "documents": [
+        {
+          "key": "catalog.json",
+          "document": {
+            "type": "Catalog",
+            "stac_version": "1.1.0",
+            "id": "demo",
+            "title": "Demo",
+            "description": "Catalog"
+          }
+        },
+        {
+          "key": "collections/0/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-0",
+            "title": "Collection 0",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/1/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-1",
+            "title": "Collection 1",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/2/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-2",
+            "title": "Collection 2",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/3/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-3",
+            "title": "Collection 3",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/4/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-4",
+            "title": "Collection 4",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/5/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-5",
+            "title": "Collection 5",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/6/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-6",
+            "title": "Collection 6",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/7/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-7",
+            "title": "Collection 7",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/8/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-8",
+            "title": "Collection 8",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/9/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-9",
+            "title": "Collection 9",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/10/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-10",
+            "title": "Collection 10",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/11/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-11",
+            "title": "Collection 11",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/12/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-12",
+            "title": "Collection 12",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/13/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-13",
+            "title": "Collection 13",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/14/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-14",
+            "title": "Collection 14",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/15/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-15",
+            "title": "Collection 15",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/16/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-16",
+            "title": "Collection 16",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/17/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-17",
+            "title": "Collection 17",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/18/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-18",
+            "title": "Collection 18",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/19/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-19",
+            "title": "Collection 19",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        }
+      ]
+    }
+  },
+  "expected": {
+    "status": "ok",
+    "result": {
+      "profile_version": "1",
+      "spec_version": "0.3.0",
+      "operations": [
+        {
+          "kind": "put",
+          "key": "catalog.json",
+          "content": "{\"description\":\"Catalog\",\"id\":\"demo\",\"links\":[{\"href\":\"collections/0/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/1/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/10/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/11/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/12/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/13/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/14/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/15/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/16/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/17/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/18/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/19/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/2/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/3/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/4/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/5/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/6/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/7/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/8/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"collections/9/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Demo\",\"type\":\"Catalog\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/0/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-0\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 0\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/1/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-1\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 1\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/10/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-10\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 10\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/11/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-11\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 11\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/12/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-12\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 12\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/13/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-13\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 13\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/14/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-14\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 14\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/15/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-15\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 15\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/16/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-16\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 16\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/17/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-17\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 17\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/18/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-18\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 18\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/19/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-19\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 19\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/2/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-2\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 2\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/3/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-3\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 3\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/4/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-4\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 4\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/5/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-5\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 5\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/6/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-6\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 6\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/7/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-7\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 7\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/8/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-8\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 8\",\"type\":\"Collection\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "collections/9/collection.json",
+          "content": "{\"description\":\"Data.\",\"extent\":{},\"id\":\"c-9\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Collection 9\",\"type\":\"Collection\"}\n"
+        }
+      ]
+    }
+  }
+}

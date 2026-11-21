@@ -185,6 +185,17 @@ def test_write_profile_round_two_has_complete_case_matrix():
     assert all(by_id[case_id].input is not None for case_id in by_id if case_id[0] in {"W", "R"})
 
 
+def test_write_profile_round_three_has_complete_case_matrix():
+    cases = {case.id: case for case in load_cases(ROOT / "fixtures/writing/cases")}
+
+    assert all(f"W{number:02d}" in cases for number in range(23, 31))
+    assert all(f"R{number:02d}" in cases for number in range(5, 8))
+    assert all(
+        cases[case_id].input is not None
+        for case_id in [*(f"W{number:02d}" for number in range(23, 31)), *(f"R{number:02d}" for number in range(5, 8))]
+    )
+
+
 def test_write_profile_expected_responses_have_valid_shape():
     for case in load_cases(ROOT / "fixtures/writing/cases"):
         if case.operation == WRITE_OPERATION:

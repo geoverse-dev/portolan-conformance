@@ -1,0 +1,31 @@
+{
+  "id": "W26",
+  "operation": "edit_plan",
+  "tags": [
+    "write",
+    "round-3"
+  ],
+  "input": {
+    "graph": {
+      "spec_version": "0.2.0",
+      "documents": [
+        {
+          "key": "catalog.json",
+          "document": {
+            "type": "Catalog",
+            "stac_version": "1.1.0",
+            "id": "demo",
+            "title": "Demo",
+            "description": "Catalog"
+          }
+        }
+      ]
+    }
+  },
+  "expected": {
+    "status": "error",
+    "error": {
+      "code": "UNSUPPORTED_SPEC_VERSION"
+    }
+  }
+}

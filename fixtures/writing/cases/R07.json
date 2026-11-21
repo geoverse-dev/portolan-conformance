@@ -1,0 +1,165 @@
+{
+  "id": "R07",
+  "operation": "roundtrip",
+  "tags": [
+    "write",
+    "round-3"
+  ],
+  "input": {
+    "graph": {
+      "spec_version": "0.3.0",
+      "documents": [
+        {
+          "key": "catalog.json",
+          "document": {
+            "type": "Catalog",
+            "stac_version": "1.1.0",
+            "id": "demo",
+            "title": "Demo",
+            "description": "Catalog"
+          }
+        },
+        {
+          "key": "collections/1/collection.json",
+          "parent_key": "catalog.json",
+          "document": {
+            "type": "Collection",
+            "stac_version": "1.1.0",
+            "id": "c-1",
+            "title": "Collection 1",
+            "description": "Data.",
+            "license": "CC-BY-4.0",
+            "extent": {}
+          }
+        },
+        {
+          "key": "collections/1/item.json",
+          "parent_key": "collections/1/collection.json",
+          "relation": "item",
+          "document": {
+            "type": "Feature",
+            "stac_version": "1.1.0",
+            "id": "item-1",
+            "collection": "c-1",
+            "geometry": null,
+            "properties": {
+              "x-nested": {
+                "flag": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "expected": {
+    "status": "ok",
+    "result": {
+      "profile_version": "1",
+      "documents": [
+        {
+          "key": "catalog.json",
+          "document": {
+            "description": "Catalog",
+            "id": "demo",
+            "links": [
+              {
+                "href": "collections/1/collection.json",
+                "rel": "child",
+                "type": "application/json"
+              },
+              {
+                "href": "catalog.json",
+                "rel": "self",
+                "type": "application/json"
+              }
+            ],
+            "stac_extensions": [
+              "https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json"
+            ],
+            "stac_version": "1.1.0",
+            "title": "Demo",
+            "type": "Catalog"
+          }
+        },
+        {
+          "key": "collections/1/collection.json",
+          "document": {
+            "description": "Data.",
+            "extent": {},
+            "id": "c-1",
+            "license": "CC-BY-4.0",
+            "links": [
+              {
+                "href": "item.json",
+                "rel": "item",
+                "type": "application/json"
+              },
+              {
+                "href": "../../catalog.json",
+                "rel": "parent",
+                "type": "application/json"
+              },
+              {
+                "href": "../../catalog.json",
+                "rel": "root",
+                "type": "application/json"
+              },
+              {
+                "href": "collection.json",
+                "rel": "self",
+                "type": "application/json"
+              }
+            ],
+            "stac_extensions": [
+              "https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json"
+            ],
+            "stac_version": "1.1.0",
+            "title": "Collection 1",
+            "type": "Collection"
+          }
+        },
+        {
+          "key": "collections/1/item.json",
+          "document": {
+            "collection": "c-1",
+            "geometry": null,
+            "id": "item-1",
+            "links": [
+              {
+                "href": "collection.json",
+                "rel": "collection",
+                "type": "application/json"
+              },
+              {
+                "href": "collection.json",
+                "rel": "parent",
+                "type": "application/json"
+              },
+              {
+                "href": "../../catalog.json",
+                "rel": "root",
+                "type": "application/json"
+              },
+              {
+                "href": "item.json",
+                "rel": "self",
+                "type": "application/json"
+              }
+            ],
+            "properties": {
+              "x-nested": {
+                "flag": true
+              }
+            },
+            "stac_extensions": [
+              "https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json"
+            ],
+            "stac_version": "1.1.0",
+            "type": "Feature"
+          }
+        }
+      ]
+    }
+  }
+}
