@@ -11,7 +11,16 @@ PROTOCOL_VERSION = "1"
 METADATA_VALIDATION_OPERATION = "validate_metadata"
 WRITE_OPERATION = "plan_write"
 READ_OPERATIONS = frozenset(
-    {"inspect", "document", "children", "collections", "items", "assets", "links"}
+    {
+        "inspect",
+        "document",
+        "children",
+        "collections",
+        "items",
+        "items_recursive",
+        "assets",
+        "links",
+    }
 )
 OPERATIONS = READ_OPERATIONS | {METADATA_VALIDATION_OPERATION, WRITE_OPERATION}
 VALIDATION_PROFILE_VERSION = "1"

@@ -1,0 +1,11 @@
+{
+  "type": "Catalog",
+  "stac_version": "1.1.0",
+  "stac_extensions": ["https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json"],
+  "id": "observations-2025",
+  "title": "Observations for 2025",
+  "description": "Items published in 2025.",
+  "links": [
+    {"rel": "item", "href": "item.json", "type": "application/geo+json"}
+  ]
+}

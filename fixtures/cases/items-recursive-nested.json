@@ -1,0 +1,17 @@
+{
+  "id": "items-recursive-nested",
+  "operation": "items_recursive",
+  "uri": "${CATALOGS}/nested-items/collection.json",
+  "tags": ["navigation", "0.3.0", "nested-items"],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "id": "observation-2025",
+          "uri": "${CATALOGS}/nested-items/years/2025/item.json"
+        }
+      ]
+    }
+  }
+}

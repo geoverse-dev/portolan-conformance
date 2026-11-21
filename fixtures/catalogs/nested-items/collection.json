@@ -1,0 +1,16 @@
+{
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": ["https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json"],
+  "id": "observations",
+  "title": "Observations",
+  "description": "Observations grouped by year.",
+  "license": "CC-BY-4.0",
+  "extent": {
+    "spatial": {"bbox": [[-59, -38, -58, -37]]},
+    "temporal": {"interval": [["2025-01-01T00:00:00Z", "2025-12-31T23:59:59Z"]]}
+  },
+  "links": [
+    {"rel": "child", "href": "years/2025/catalog.json", "type": "application/json"}
+  ]
+}

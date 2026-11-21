@@ -1,0 +1,10 @@
+{
+  "id": "items-direct-nested",
+  "operation": "items",
+  "uri": "${CATALOGS}/nested-items/collection.json",
+  "tags": ["navigation", "0.3.0", "nested-items"],
+  "expected": {
+    "status": "ok",
+    "result": {"entries": []}
+  }
+}

@@ -11,7 +11,7 @@ Implement a **read-only** Portolan metadata client in `portolan-python` and `por
 3. Support Catalog, Collection and Feature (Item), including nested catalogs, collection-level assets, item-level assets, and empty item lists.
 4. Preserve raw JSON and extension fields: `stac_extensions`, namespaced metadata, `providers`, `extent`, `properties`, `alternate`, `file:size`, etc. Do not silently discard unknown fields. Preserve Unicode, JSON null and numeric types.
 5. Navigate via **STAC links**, not directory scanning. Resolve relative links against the containing JSON document URI. Do not assume collection IDs equal directory names or flatten nested paths.
-6. Implement traversal with cycle protection and deterministic ordering. `collections` recursively traverses `child` links through Catalogs, returns Collections, never follows `alternate` as containment; `children` returns direct child links; `items` returns direct `item` links of the selected Collection. Do not infer missing links.
+6. Implement traversal with cycle protection and deterministic ordering. `collections` recursively traverses `child` links through Catalogs and returns Collections. `children` returns direct child links. `items` returns direct `item` links. `items_recursive` follows child Catalogs, returns their items, and stops before another Collection. Do not infer missing links.
 7. Resolve asset hrefs against the containing document URI without downloading asset bytes. Preserve original href separately. For remote HTTPS, preserve query strings/fragments. Preserve non-HTTP absolute schemes such as `s3://` rather than rewriting them.
 8. Errors: missing local/HTTP 404 -> `NOT_FOUND`; invalid JSON -> `INVALID_JSON`; malformed request -> `INVALID_REQUEST`; unsupported operation -> `UNSUPPORTED_OPERATION`; inaccessible/failed remote resource -> `READ_ERROR`. Error codes must be stable, messages optional. Avoid swallowing exceptions into empty lists.
 9. Keep SDK API idiomatic for its language. The **adapter** translates it to the protocol below; do not force protocol names into the public SDK API.
@@ -34,15 +34,16 @@ Operations and **exact** result structures:
 - `children`: `{ "entries": [{ "id": string, "uri": absolute_URI }] }` from direct `child` links. Sort by `(id, uri)`.
 - `collections`: same entries schema; recursively follow `child` links through Catalog nodes and return Collection nodes; sort by `(id, uri)`; cycle-safe.
 - `items`: same entries schema, direct `item` links; sort by `(id, uri)`.
+- `items_recursive`: same entries schema; follow `item` links and recurse through child Catalogs. Do not enter child Collections. Sort by `(id, uri)`.
 - `assets`: `{ "entries": [{ "key": string, "href": string, "resolved_href": absolute_URI, "type": string|null, "roles": array, "title": string|null, "description": string|null, "extra_fields": object }] }`; sort by `key`. `extra_fields` contains all unrecognized asset fields, including extension-prefixed fields and `alternate`.
 - `links`: `{ "entries": [{ "rel": string, "href": string, "resolved_href": absolute_URI, "type": string|null, "title": string|null, "extra_fields": object }] }`; sort by `(rel, href)`; preserve other link fields in `extra_fields`.
 
 Success: `{ "status": "ok", "result": object }`.
 Error: `{ "status": "error", "error": { "code": "NOT_FOUND|INVALID_JSON|INVALID_REQUEST|UNSUPPORTED_OPERATION|READ_ERROR|UNSUPPORTED_PROTOCOL" } }`.
 
-All seven operations are **mandatory** for Read Profile v1. `UNSUPPORTED` is **not** a passing substitute. A successful `inspect` does not assert the input is spec-conformant: it only reads it. Do not add validation requirements not in the profile.
+All eight operations are **mandatory** for the current Read Profile v1 fixture set. `UNSUPPORTED` is **not** a passing substitute. A successful `inspect` does not assert the input is spec-conformant: it only reads it. Do not add validation requirements not in the profile.
 
-**URI semantics**: use RFC 3986-style relative reference resolution; `file://` absolute URI results for local fixtures; no filesystem paths in response. Beware Java `URI.resolve` with `../`, and URL percent encoding. Preserve arrays as authored unless an operation explicitly specifies sorting. `collections` and `children` use linked targets' `id`, not link title. Avoid dereferencing `data` assets during metadata reads.
+**URI semantics**: use RFC 3986-style relative reference resolution; `file://` absolute URI results for local fixtures; no filesystem paths in response. Resolve relative references against the final document URL after HTTP redirects. Beware Java `URI.resolve` with `../`, and URL percent encoding. Preserve arrays as authored unless an operation explicitly specifies sorting. `collections` and `children` use linked targets' `id`, not link title. Avoid dereferencing `data` assets during metadata reads.
 
 ## How to integrate
 

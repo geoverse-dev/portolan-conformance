@@ -8,6 +8,7 @@ import sysconfig
 import time
 from pathlib import Path
 
+from .fixture_server import fixture_http_server
 from .protocol import (
     METADATA_VALIDATION_OPERATION,
     WRITE_OPERATION,
@@ -65,54 +66,57 @@ def main(argv: list[str] | None = None) -> int:
     if not cases:
         parser.error("No cases selected")
     results = []
-    for case in cases:
-        uri = (
-            case.uri.replace("${CATALOGS}", catalogs_root.resolve().as_uri())
-            if case.uri is not None
-            else None
-        )
-        started = time.monotonic()
-        try:
-            if case.input is None:
-                actual = invoke(command, case.operation, uri, timeout=args.timeout)
-            else:
-                actual = invoke(
-                    command,
-                    case.operation,
-                    input_value=case.input,
-                    timeout=args.timeout,
-                )
-            if case.operation == METADATA_VALIDATION_OPERATION:
-                try:
-                    validate_metadata_response(actual)
-                except (TypeError, ValueError) as exc:
-                    raise AdapterFailure(str(exc)) from exc
-            if case.operation == WRITE_OPERATION:
-                try:
-                    validate_write_response(actual)
-                except (TypeError, ValueError) as exc:
-                    raise AdapterFailure(str(exc)) from exc
-            expected = json.loads(
-                json.dumps(case.expected).replace(
+    with fixture_http_server(catalogs_root) as http_catalogs:
+        for case in cases:
+            uri = (
+                case.uri.replace(
                     "${CATALOGS}", catalogs_root.resolve().as_uri()
-                )
+                ).replace("${HTTP_CATALOGS}", http_catalogs)
+                if case.uri is not None
+                else None
             )
-            passed, message = compare(actual, expected)
-        except AdapterFailure as exc:
-            passed, message = False, str(exc)
-        elapsed = round(time.monotonic() - started, 4)
-        results.append(
-            {
-                "id": case.id,
-                "status": "PASS" if passed else "FAIL",
-                "duration_seconds": elapsed,
-                "message": message,
-            }
-        )
-        print(
-            f"{'PASS' if passed else 'FAIL'} {case.id}"
-            + (f" — {message[:300]}" if message else "")
-        )
+            started = time.monotonic()
+            try:
+                if case.input is None:
+                    actual = invoke(command, case.operation, uri, timeout=args.timeout)
+                else:
+                    actual = invoke(
+                        command,
+                        case.operation,
+                        input_value=case.input,
+                        timeout=args.timeout,
+                    )
+                if case.operation == METADATA_VALIDATION_OPERATION:
+                    try:
+                        validate_metadata_response(actual)
+                    except (TypeError, ValueError) as exc:
+                        raise AdapterFailure(str(exc)) from exc
+                if case.operation == WRITE_OPERATION:
+                    try:
+                        validate_write_response(actual)
+                    except (TypeError, ValueError) as exc:
+                        raise AdapterFailure(str(exc)) from exc
+                expected = json.loads(
+                    json.dumps(case.expected)
+                    .replace("${CATALOGS}", catalogs_root.resolve().as_uri())
+                    .replace("${HTTP_CATALOGS}", http_catalogs)
+                )
+                passed, message = compare(actual, expected)
+            except AdapterFailure as exc:
+                passed, message = False, str(exc)
+            elapsed = round(time.monotonic() - started, 4)
+            results.append(
+                {
+                    "id": case.id,
+                    "status": "PASS" if passed else "FAIL",
+                    "duration_seconds": elapsed,
+                    "message": message,
+                }
+            )
+            print(
+                f"{'PASS' if passed else 'FAIL'} {case.id}"
+                + (f" — {message[:300]}" if message else "")
+            )
     summary = {
         "total": len(results),
         "passed": sum(x["status"] == "PASS" for x in results),

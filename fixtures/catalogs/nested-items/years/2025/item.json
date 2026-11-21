@@ -1,0 +1,11 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "stac_extensions": ["https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json"],
+  "id": "observation-2025",
+  "collection": "observations",
+  "geometry": null,
+  "bbox": [-59, -38, -58, -37],
+  "properties": {"published": true, "sequence": 1, "quality": 1.5, "optional": null},
+  "links": []
+}

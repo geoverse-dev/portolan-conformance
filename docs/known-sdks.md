@@ -33,7 +33,8 @@ The released target runs Read Profile v1 through `tests/conformance_adapter.py`.
 The development branch adds `make check-conformance-write` for Write Profile v1 Round 1.
 It writes `write-profile-report.json`.
 
-The read profile has 25 cases, and the first write round has 15 cases.
+The development read profile has 29 cases, and the first write round has 15 cases.
+The new read cases cover nested collection items, redirects, and strict JSON types.
 Neither profile validates a catalog against the Portolan specification.
 Python applications use Rashid for normative validation.
 `portolan-python` does not duplicate Rashid's rules.

@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 from portolan_conformance.cli import main
+from portolan_conformance.fixture_server import fixture_http_server
 from portolan_conformance.protocol import (
     METADATA_VALIDATION_OPERATION,
     WRITE_OPERATION,
@@ -22,17 +23,19 @@ def test_fixtures_have_unique_cases():
 
 
 def test_reference_adapter_cases():
-    for case in load_cases(ROOT / "fixtures/cases"):
-        uri = case.uri.replace(
-            "${CATALOGS}", (ROOT / "fixtures/catalogs").resolve().as_uri()
-        )
-        actual = invoke(COMMAND, case.operation, uri)
-        expected = json.loads(
-            json.dumps(case.expected).replace(
-                "${CATALOGS}", (ROOT / "fixtures/catalogs").resolve().as_uri()
+    catalogs = ROOT / "fixtures/catalogs"
+    with fixture_http_server(catalogs) as http_catalogs:
+        for case in load_cases(ROOT / "fixtures/cases"):
+            uri = case.uri.replace(
+                "${CATALOGS}", catalogs.resolve().as_uri()
+            ).replace("${HTTP_CATALOGS}", http_catalogs)
+            actual = invoke(COMMAND, case.operation, uri)
+            expected = json.loads(
+                json.dumps(case.expected)
+                .replace("${CATALOGS}", catalogs.resolve().as_uri())
+                .replace("${HTTP_CATALOGS}", http_catalogs)
             )
-        )
-        assert compare(actual, expected)[0], case.id
+            assert compare(actual, expected)[0], case.id
 
 
 def test_cli_report(tmp_path):
@@ -66,6 +69,25 @@ def test_array_order_is_not_normalized():
         {"status": "ok", "result": {"entries": [1, 2]}},
         {"status": "ok", "result": {"entries": [2, 1]}},
     )[0]
+
+
+def test_json_boolean_and_number_are_not_equal():
+    assert not compare(
+        {"status": "ok", "result": {"document": {"value": True}}},
+        {"status": "ok", "result": {"document": {"value": 1}}},
+    )[0]
+
+
+def test_nested_item_fixture_exposes_direct_and_recursive_operations():
+    cases = {case.id: case for case in load_cases(ROOT / "fixtures/cases")}
+
+    assert cases["items-direct-nested"].operation == "items"
+    assert cases["items-direct-nested"].expected["result"]["entries"] == []
+    assert cases["items-recursive-nested"].operation == "items_recursive"
+    assert [
+        entry["id"]
+        for entry in cases["items-recursive-nested"].expected["result"]["entries"]
+    ] == ["observation-2025"]
 
 
 def test_metadata_validation_cases_have_version_matrix():

@@ -1,0 +1,17 @@
+{
+  "id": "items-recursive-redirect",
+  "operation": "items_recursive",
+  "uri": "${HTTP_CATALOGS}/redirect/nested-items",
+  "tags": ["navigation", "http", "redirect", "0.3.0", "nested-items"],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "id": "observation-2025",
+          "uri": "${HTTP_CATALOGS}/nested-items/years/2025/item.json"
+        }
+      ]
+    }
+  }
+}

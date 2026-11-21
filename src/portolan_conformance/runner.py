@@ -54,6 +54,22 @@ def canonicalize(value: Any) -> Any:
 
 def compare(actual: dict[str, Any], expected: dict[str, Any]) -> tuple[bool, str]:
     a, e = canonicalize(actual), canonicalize(expected)
-    if a == e:
+    if _json_equal(a, e):
         return True, ""
     return False, "expected=" + json.dumps(e, ensure_ascii=False, sort_keys=True) + " actual=" + json.dumps(a, ensure_ascii=False, sort_keys=True)
+
+
+def _json_equal(actual: Any, expected: Any) -> bool:
+    """Compare decoded JSON without Python's bool-to-number coercion."""
+    if isinstance(actual, bool) or isinstance(expected, bool):
+        return type(actual) is type(expected) and actual == expected
+    if isinstance(actual, dict) and isinstance(expected, dict):
+        return actual.keys() == expected.keys() and all(
+            _json_equal(actual[key], expected[key]) for key in actual
+        )
+    if isinstance(actual, list) and isinstance(expected, list):
+        return len(actual) == len(expected) and all(
+            _json_equal(a_value, e_value)
+            for a_value, e_value in zip(actual, expected, strict=True)
+        )
+    return actual == expected

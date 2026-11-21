@@ -8,15 +8,23 @@ import json
 import sys
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit, unquote
+from urllib.request import urlopen
 
 
 def read(uri: str) -> dict:
+    return read_document(uri)[0]
+
+
+def read_document(uri: str) -> tuple[dict, str]:
     parts = urlsplit(uri)
-    if parts.scheme != "file":
-        raise ValueError("Fixture adapter supports file:// only")
-    path = Path(unquote(parts.path))
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        if parts.scheme == "file":
+            path = Path(unquote(parts.path))
+            return json.loads(path.read_text(encoding="utf-8")), uri
+        if parts.scheme in {"http", "https"}:
+            with urlopen(uri) as response:
+                return json.loads(response.read().decode("utf-8")), response.geturl()
+        raise ValueError("Fixture adapter supports file:// and HTTP only")
     except FileNotFoundError as exc:
         raise LookupError("NOT_FOUND") from exc
     except json.JSONDecodeError as exc:
@@ -39,14 +47,14 @@ def main() -> int:
         if request.get("protocol_version") != "1":
             raise ValueError("UNSUPPORTED_PROTOCOL")
         op, uri = request["operation"], request["uri"]
-        doc = read(uri)
+        doc, uri = read_document(uri)
         links = doc.get("links", [])
         if op == "inspect":
             result = summarize(doc, uri)
         elif op == "document":
             result = {"document": doc}
-        elif op in ("children", "collections", "items"):
-            rels = {"children": {"child"}, "collections": {"child"}, "items": {"item"}}[op]
+        elif op in ("children", "collections", "items", "items_recursive"):
+            rels = {"children": {"child"}, "collections": {"child"}, "items": {"item"}}.get(op, set())
             if op == "collections":
                 # Traverses nested catalogs, but never treats items as collections.
                 def walk(d, base, visited):
@@ -61,6 +69,22 @@ def main() -> int:
                         elif child.get("type") == "Catalog": out.extend(walk(child, dest, visited))
                     return out
                 result = {"entries": sorted(walk(doc, uri, set()), key=lambda e:(e["id"], e["uri"]))}
+            elif op == "items_recursive":
+                # Follow child Catalogs but stop before child Collections.
+                def walk_items(d, base, visited):
+                    if base in visited: return []
+                    visited.add(base)
+                    out = []
+                    for link in d.get("links", []):
+                        dest = urljoin(base, link["href"])
+                        if link.get("rel") == "item":
+                            out.append({"id": read(dest)["id"], "uri": dest})
+                        elif link.get("rel") == "child":
+                            child = read(dest)
+                            if child.get("type") == "Catalog":
+                                out.extend(walk_items(child, dest, visited))
+                    return out
+                result = {"entries": sorted(walk_items(doc, uri, set()), key=lambda e:(e["id"], e["uri"]))}
             else:
                 result = {"entries": sorted([{"id": read(urljoin(uri,l["href"]))["id"], "uri": urljoin(uri,l["href"])}
                            for l in links if l.get("rel") in rels], key=lambda e:(e["id"],e["uri"]))}
