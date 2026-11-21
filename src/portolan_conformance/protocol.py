@@ -4,42 +4,54 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 PROTOCOL_VERSION = "1"
 METADATA_VALIDATION_OPERATION = "validate_metadata"
+WRITE_OPERATION = "plan_write"
 READ_OPERATIONS = frozenset(
     {"inspect", "document", "children", "collections", "items", "assets", "links"}
 )
-OPERATIONS = READ_OPERATIONS | {METADATA_VALIDATION_OPERATION}
+OPERATIONS = READ_OPERATIONS | {METADATA_VALIDATION_OPERATION, WRITE_OPERATION}
 VALIDATION_PROFILE_VERSION = "1"
+WRITE_PROFILE_VERSION = "1"
 
 
 @dataclass(frozen=True)
 class Case:
     id: str
     operation: str
-    uri: str
+    uri: str | None
     expected: dict[str, Any]
+    input: dict[str, Any] | None = None
     tags: tuple[str, ...] = ()
     description: str = ""
 
     @classmethod
     def from_path(cls, path: Path) -> Case:
         data = json.loads(path.read_text(encoding="utf-8"))
-        required = {"id", "operation", "uri", "expected"}
+        required = {"id", "operation", "expected"}
         if not required.issubset(data):
             raise ValueError(f"{path}: missing {required - data.keys()}")
         if data["operation"] not in OPERATIONS:
             raise ValueError(f"{path}: unsupported operation {data['operation']}")
+        uri = data.get("uri")
+        input_value = data.get("input")
+        if data["operation"] == WRITE_OPERATION:
+            if not isinstance(input_value, dict) or uri is not None:
+                raise ValueError(f"{path}: write cases require input and no uri")
+            validate_write_response(data["expected"])
+        elif not isinstance(uri, str) or input_value is not None:
+            raise ValueError(f"{path}: read cases require uri and no input")
         if data["operation"] == METADATA_VALIDATION_OPERATION:
             validate_metadata_response(data["expected"])
         return cls(
             id=data["id"],
             operation=data["operation"],
-            uri=data["uri"],
+            uri=uri,
             expected=data["expected"],
+            input=input_value,
             tags=tuple(data.get("tags", [])),
             description=data.get("description", ""),
         )
@@ -98,3 +110,75 @@ def validate_metadata_response(response: dict[str, Any]) -> None:
             raise ValueError(f"{field} must be a sorted unique string array")
     if result["valid"] != (not result["errors"]):
         raise ValueError("valid must be true exactly when errors is empty")
+
+
+def validate_write_response(response: dict[str, Any]) -> None:
+    """Validate the exact Write Profile v1 adapter response shape."""
+    if response.get("status") == "error":
+        error = response.get("error")
+        allowed = {
+            "DUPLICATE_OUTPUT_KEY",
+            "INVALID_OUTPUT_PATH",
+            "INVALID_REQUEST",
+            "MISSING_REQUIRED_METADATA",
+            "UNSUPPORTED_OPERATION",
+            "UNSUPPORTED_PROTOCOL",
+            "UNSUPPORTED_SPEC_VERSION",
+            "WRITE_ERROR",
+        }
+        if (
+            not isinstance(error, dict)
+            or set(error) != {"code"}
+            or error["code"] not in allowed
+        ):
+            raise ValueError("invalid write profile domain error")
+        return
+    if response.get("status") != "ok":
+        raise ValueError("write response status must be ok or error")
+    result = response.get("result")
+    if not isinstance(result, dict) or set(result) != {
+        "profile_version",
+        "spec_version",
+        "operations",
+    }:
+        raise ValueError("invalid write result fields")
+    if result["profile_version"] != WRITE_PROFILE_VERSION:
+        raise ValueError("unsupported write profile version")
+    if result["spec_version"] != "0.3.0":
+        raise ValueError("write-v1 Round 1 supports spec version 0.3.0")
+    operations = result["operations"]
+    if not isinstance(operations, list):
+        raise TypeError("operations must be an array")
+    keys: list[str] = []
+    for operation in operations:
+        if not isinstance(operation, dict) or set(operation) != {"kind", "key", "content"}:
+            raise ValueError("invalid write operation fields")
+        if operation["kind"] != "put":
+            raise ValueError("write-v1 Round 1 operations must be put")
+        key = operation["key"]
+        if not _safe_output_key(key):
+            raise ValueError("operation key must be a safe relative POSIX path")
+        content = operation["content"]
+        if not isinstance(content, str):
+            raise TypeError("operation content must be UTF-8 text")
+        if key.endswith(".json"):
+            try:
+                value = json.loads(content)
+            except json.JSONDecodeError as exc:
+                raise ValueError("JSON operation content must be valid JSON") from exc
+            if not isinstance(value, dict):
+                raise TypeError("JSON operation content must be an object")
+        keys.append(key)
+    if keys != sorted(keys) or len(keys) != len(set(keys)):
+        raise ValueError("write operations must have sorted unique keys")
+
+
+def _safe_output_key(value: object) -> bool:
+    if not isinstance(value, str) or not value or "\\" in value:
+        return False
+    path = PurePosixPath(value)
+    return (
+        not path.is_absolute()
+        and path.as_posix() == value
+        and all(part not in {"", ".", ".."} for part in path.parts)
+    )

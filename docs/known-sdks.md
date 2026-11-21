@@ -10,10 +10,10 @@ Each SDK pins a conformance revision in its own CI workflow.
 
 ## SDK status
 
-| SDK | Read Profile v1 | Metadata Validation Profile v1 | Local command |
-|---|---|---|---|
-| `portolan-python` | Pass | Not implemented; use Rashid | `make check-conformance` |
-| `portolan-java` | Pass | Pass for the initial fixture matrix | `make check-conformance` |
+| SDK | Read Profile v1 | Write Profile v1 Round 1 | Metadata Validation Profile v1 | Local command |
+|---|---|---|---|---|
+| `portolan-python` | Pass | Pass on the development branch | Not implemented; use Rashid | `make check-conformance` |
+| `portolan-java` | Pass | Not implemented | Pass for the initial fixture matrix | `make check-conformance` |
 
 A profile pass applies only to the cases in the pinned conformance revision.
 It does not prove full Portolan catalog conformance.
@@ -29,11 +29,12 @@ Then it runs:
 make check-conformance
 ```
 
-The target runs Read Profile v1 through `tests/conformance_adapter.py`.
-It writes `read-profile-report.json` in the repository root.
+The released target runs Read Profile v1 through `tests/conformance_adapter.py`.
+The development branch adds `make check-conformance-write` for Write Profile v1 Round 1.
+It writes `write-profile-report.json`.
 
-The 25 passing cases verify read behavior only.
-They do not validate a catalog against the Portolan specification.
+The read profile has 25 cases, and the first write round has 15 cases.
+Neither profile validates a catalog against the Portolan specification.
 Python applications use Rashid for normative validation.
 `portolan-python` does not duplicate Rashid's rules.
 
@@ -42,8 +43,11 @@ Override the runner or report path when required:
 ```bash
 make check-conformance \
   CONFORMANCE=/path/to/portolan-conformance/.venv/bin/portolan-conformance \
-  CONFORMANCE_REPORT=/tmp/portolan-python-read.json
+  CONFORMANCE_REPORT=/tmp/portolan-python-read.json \
+  CONFORMANCE_WRITE_REPORT=/tmp/portolan-python-write.json
 ```
+
+Use `make check-conformance-all` with that override to run both profiles.
 
 ## Validate portolan-java
 

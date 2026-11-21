@@ -9,8 +9,19 @@ from typing import Any
 class AdapterFailure(Exception):
     pass
 
-def invoke(command: list[str], operation: str, uri: str, *, timeout: float = 15.0) -> dict[str, Any]:
-    request = {"protocol_version": "1", "operation": operation, "uri": uri}
+def invoke(
+    command: list[str],
+    operation: str,
+    uri: str | None = None,
+    *,
+    input_value: dict[str, Any] | None = None,
+    timeout: float = 15.0,
+) -> dict[str, Any]:
+    request: dict[str, Any] = {"protocol_version": "1", "operation": operation}
+    if uri is not None:
+        request["uri"] = uri
+    if input_value is not None:
+        request["input"] = input_value
     try:
         proc = subprocess.run(command, input=json.dumps(request) + "\n", text=True,
                               capture_output=True, timeout=timeout, check=False,

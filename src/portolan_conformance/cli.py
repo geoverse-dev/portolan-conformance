@@ -10,8 +10,10 @@ from pathlib import Path
 
 from .protocol import (
     METADATA_VALIDATION_OPERATION,
+    WRITE_OPERATION,
     load_cases,
     validate_metadata_response,
+    validate_write_response,
 )
 from .runner import AdapterFailure, compare, invoke
 
@@ -33,7 +35,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         "--profile",
-        choices=("read", "metadata-validation"),
+        choices=("read", "metadata-validation", "write"),
         default="read",
         help="Behavior profile to run",
     )
@@ -50,9 +52,11 @@ def main(argv: list[str] | None = None) -> int:
     command = shlex.split(args.adapter)
     if not command:
         parser.error("--adapter must not be empty")
-    profile_root = FIXTURES / (
-        "validation" if args.profile == "metadata-validation" else ""
-    )
+    profile_root = FIXTURES
+    if args.profile == "metadata-validation":
+        profile_root /= "validation"
+    elif args.profile == "write":
+        profile_root /= "writing"
     cases_root = args.cases or profile_root / "cases"
     catalogs_root = args.catalogs or profile_root / "catalogs"
     cases = load_cases(cases_root)
@@ -62,13 +66,30 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("No cases selected")
     results = []
     for case in cases:
-        uri = case.uri.replace("${CATALOGS}", catalogs_root.resolve().as_uri())
+        uri = (
+            case.uri.replace("${CATALOGS}", catalogs_root.resolve().as_uri())
+            if case.uri is not None
+            else None
+        )
         started = time.monotonic()
         try:
-            actual = invoke(command, case.operation, uri, timeout=args.timeout)
+            if case.input is None:
+                actual = invoke(command, case.operation, uri, timeout=args.timeout)
+            else:
+                actual = invoke(
+                    command,
+                    case.operation,
+                    input_value=case.input,
+                    timeout=args.timeout,
+                )
             if case.operation == METADATA_VALIDATION_OPERATION:
                 try:
                     validate_metadata_response(actual)
+                except (TypeError, ValueError) as exc:
+                    raise AdapterFailure(str(exc)) from exc
+            if case.operation == WRITE_OPERATION:
+                try:
+                    validate_write_response(actual)
                 except (TypeError, ValueError) as exc:
                     raise AdapterFailure(str(exc)) from exc
             expected = json.loads(

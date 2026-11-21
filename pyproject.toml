@@ -42,6 +42,8 @@ where = ["src"]
 "share/portolan-conformance/fixtures/validation/catalogs/v03-missing-title" = ["fixtures/validation/catalogs/v03-missing-title/*.json"]
 "share/portolan-conformance/fixtures/validation/catalogs/v03-s3-alternate" = ["fixtures/validation/catalogs/v03-s3-alternate/*.json"]
 "share/portolan-conformance/fixtures/validation/catalogs/v03-valid" = ["fixtures/validation/catalogs/v03-valid/*.json"]
+"share/portolan-conformance/fixtures/writing" = ["fixtures/writing/*.json"]
+"share/portolan-conformance/fixtures/writing/cases" = ["fixtures/writing/cases/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
