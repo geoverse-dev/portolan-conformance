@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0 — 2026-11-21
+
 - Add SDK Write Profile v1 Round 1 with cases W01–W15.
 - Define deterministic, storage-independent PUT plans for Portolan 0.3.0 metadata.
 - Distinguish direct and recursive item discovery in the Read Profile.
