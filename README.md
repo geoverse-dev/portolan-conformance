@@ -39,8 +39,9 @@ All operations and field schemas are defined in [SDK Read Profile v1](docs/sdk-i
 The [Metadata Validation Profile](docs/metadata-validation-profile.md) defines a separate metadata-only contract.
 It covers version-specific Portolan 0.2.0 and 0.3.0 behavior.
 
-The [SDK Write Profile v1](docs/write-profile.md) defines storage-independent authoring plans.
-Round 1 contains cases W01–W15 for Portolan 0.3.0.
+The [SDK Write Profile v1.1](docs/write-profile.md) defines storage-independent authoring plans.
+Its 44 cases cover planning, editing, structural links, documentation, and round trips
+for Portolan 0.3.0.
 
 [Known SDKs](docs/known-sdks.md) lists current implementations and their conformance commands.
 

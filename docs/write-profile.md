@@ -34,6 +34,8 @@ on generated `item` links, and copy-on-write documentation editing. A generated
 item link uses the managed document's explicit `link_title` when the item has no
 `properties.title`.
 
+The complete profile contains 44 cases: W01–W36 and R01–R08.
+
 ## Adapter request
 
 The adapter receives one JSON object on standard input:
@@ -51,7 +53,7 @@ Documentation entries contain caller-supplied content and an owning document key
 A successful response contains an ordered operation list:
 
 ```json
-{"status":"ok","result":{"profile_version":"1","spec_version":"0.3.0","operations":[{"kind":"put","key":"catalog.json","content":"{}\n"}]}}
+{"status":"ok","result":{"profile_version":"1.1","spec_version":"0.3.0","operations":[{"kind":"put","key":"catalog.json","content":"{}\n"}]}}
 ```
 
 Operation keys must be unique, sorted, relative POSIX paths.
