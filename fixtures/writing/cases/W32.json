@@ -1,0 +1,31 @@
+{
+  "id": "W32",
+  "description": "Generated child links carry the target title",
+  "operation": "plan_write",
+  "tags": ["write", "profile-1.1", "structural-links", "titles"],
+  "input": {
+    "spec_version": "0.3.0",
+    "documents": [
+      {
+        "key": "catalog.json",
+        "document": {"type": "Catalog", "stac_version": "1.1.0", "id": "demo", "title": "Demo", "description": "Catalog"}
+      },
+      {
+        "key": "roads/collection.json",
+        "parent_key": "catalog.json",
+        "document": {"type": "Collection", "stac_version": "1.1.0", "id": "roads", "title": "Road Centerlines", "description": "Road data", "license": "CC-BY-4.0", "extent": {"spatial": {"bbox": [[-59, -38, -58, -37]]}, "temporal": {"interval": [[null, null]]}}}
+      }
+    ]
+  },
+  "expected": {
+    "status": "ok",
+    "result": {
+      "profile_version": "1.1",
+      "spec_version": "0.3.0",
+      "operations": [
+        {"kind": "put", "key": "catalog.json", "content": "{\"description\":\"Catalog\",\"id\":\"demo\",\"links\":[{\"href\":\"roads/collection.json\",\"rel\":\"child\",\"title\":\"Road Centerlines\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Demo\",\"type\":\"Catalog\"}\n"},
+        {"kind": "put", "key": "roads/collection.json", "content": "{\"description\":\"Road data\",\"extent\":{\"spatial\":{\"bbox\":[[-59,-38,-58,-37]]},\"temporal\":{\"interval\":[[null,null]]}},\"id\":\"roads\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Road Centerlines\",\"type\":\"Collection\"}\n"}
+      ]
+    }
+  }
+}

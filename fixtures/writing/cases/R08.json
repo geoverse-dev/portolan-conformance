@@ -1,0 +1,23 @@
+{
+  "id": "R08",
+  "description": "Documentation added through the editor survives materialization and reading",
+  "operation": "roundtrip",
+  "tags": ["write", "profile-1.1", "documentation", "roundtrip"],
+  "input": {
+    "graph": {"spec_version": "0.3.0", "documents": [{"key": "catalog.json", "document": {"type": "Catalog", "stac_version": "1.1.0", "id": "demo", "title": "Demo", "description": "Catalog"}}]},
+    "changes": [
+      {"kind": "set_documentation", "key": "README.md", "owner_key": "catalog.json", "rel": "describedby", "content": "# Demo\n"},
+      {"kind": "set_documentation", "key": "AGENTS.md", "owner_key": "catalog.json", "rel": "agents", "content": "# Agents\n"}
+    ]
+  },
+  "expected": {"status": "ok", "result": {
+    "profile_version": "1.1",
+    "documents": [{"key": "catalog.json", "document": {"description": "Catalog", "id": "demo", "links": [
+      {"href": "AGENTS.md", "rel": "agents", "type": "text/markdown"},
+      {"href": "README.md", "rel": "describedby", "type": "text/markdown"},
+      {"href": "catalog.json", "rel": "root", "type": "application/json"},
+      {"href": "catalog.json", "rel": "self", "type": "application/json"}
+    ], "stac_extensions": ["https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json"], "stac_version": "1.1.0", "title": "Demo", "type": "Catalog"}}],
+    "documentation": [{"key": "AGENTS.md", "content": "# Agents\n"}, {"key": "README.md", "content": "# Demo\n"}]
+  }}
+}

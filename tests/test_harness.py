@@ -196,6 +196,17 @@ def test_write_profile_round_three_has_complete_case_matrix():
     )
 
 
+def test_write_profile_v1_1_has_structural_and_documentation_cases():
+    cases = {case.id: case for case in load_cases(ROOT / "fixtures/writing/cases")}
+
+    assert all(f"W{number:02d}" in cases for number in range(31, 37))
+    assert "R08" in cases
+    assert all(
+        "profile-1.1" in cases[case_id].tags
+        for case_id in [*(f"W{number:02d}" for number in range(31, 37)), "R08"]
+    )
+
+
 def test_write_profile_expected_responses_have_valid_shape():
     for case in load_cases(ROOT / "fixtures/writing/cases"):
         if case.operation == WRITE_OPERATION:
@@ -208,7 +219,7 @@ def test_write_response_rejects_unsafe_or_unsorted_operations():
             {
                 "status": "ok",
                 "result": {
-                    "profile_version": "1",
+                    "profile_version": "1.1",
                     "spec_version": "0.3.0",
                     "operations": [{"kind": "put", "key": "../catalog.json", "content": "{}\n"}],
                 },
@@ -220,7 +231,7 @@ def test_write_response_rejects_unsafe_or_unsorted_operations():
             {
                 "status": "ok",
                 "result": {
-                    "profile_version": "1",
+                    "profile_version": "1.1",
                     "spec_version": "0.3.0",
                     "operations": [
                         {"kind": "put", "key": "z.json", "content": "{}\n"},

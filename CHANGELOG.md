@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.3.0 — 2026-11-23
+
+- Add Write Profile v1.1 structural-link requirements.
+- Require titles and correct media types on generated containment links.
+- Add copy-on-write documentation editing and round-trip cases.
+- Keep Write Profile v1 fixtures available through the immutable v0.2.0 release.
+
 ## 0.2.0 — 2026-11-21
 
 - Add SDK Write Profile v1 Round 1 with cases W01–W15.

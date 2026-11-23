@@ -1,4 +1,4 @@
-# SDK Write Profile v1
+# SDK Write Profile v1.1
 
 This profile tests portable SDK behavior for in-memory catalog authoring.
 It is a behavioral contract, not a normative Portolan validator.
@@ -27,6 +27,12 @@ DELETE operations require `prior_managed_keys`; the planner never scans a destin
 Round 3 adds W23–W30 and R05–R07. These cases cover malformed metadata,
 duplicate links, JSON value fidelity, href edge cases, larger graphs, repeated planning,
 serialization failures, documentation preservation, and read-profile regression.
+
+Version 1.1 adds W31–W36 and R08. These cases require the root catalog's own
+`root` link, titles on generated `child` and `item` links, the GeoJSON media type
+on generated `item` links, and copy-on-write documentation editing. A generated
+item link uses the managed document's explicit `link_title` when the item has no
+`properties.title`.
 
 ## Adapter request
 

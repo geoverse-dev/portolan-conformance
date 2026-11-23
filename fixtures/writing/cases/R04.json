@@ -57,7 +57,7 @@
   "expected": {
     "status": "ok",
     "result": {
-      "profile_version": "1",
+      "profile_version": "1.1",
       "documents": [
         {
           "key": "catalog.json",
@@ -68,6 +68,12 @@
               {
                 "href": "roads/collection.json",
                 "rel": "child",
+                "type": "application/json",
+                "title": "Roads"
+              },
+              {
+                "href": "catalog.json",
+                "rel": "root",
                 "type": "application/json"
               },
               {

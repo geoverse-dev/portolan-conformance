@@ -1,0 +1,26 @@
+{
+  "id": "W33",
+  "description": "Generated item links carry an explicit title and GeoJSON media type",
+  "operation": "plan_write",
+  "tags": ["write", "profile-1.1", "structural-links", "titles", "items"],
+  "input": {
+    "spec_version": "0.3.0",
+    "documents": [
+      {"key": "catalog.json", "document": {"type": "Catalog", "stac_version": "1.1.0", "id": "demo", "title": "Demo", "description": "Catalog"}},
+      {"key": "scenes/collection.json", "parent_key": "catalog.json", "document": {"type": "Collection", "stac_version": "1.1.0", "id": "scenes", "title": "Scenes", "description": "Scenes", "license": "proprietary", "extent": {"spatial": {"bbox": [[-59, -38, -58, -37]]}, "temporal": {"interval": [[null, null]]}}}},
+      {"key": "scenes/scene-1.json", "parent_key": "scenes/collection.json", "relation": "item", "link_title": "Scene from January 2026", "document": {"type": "Feature", "stac_version": "1.1.0", "id": "scene-1", "collection": "scenes", "geometry": null, "properties": {"datetime": "2026-01-01T00:00:00Z"}, "links": []}}
+    ]
+  },
+  "expected": {
+    "status": "ok",
+    "result": {
+      "profile_version": "1.1",
+      "spec_version": "0.3.0",
+      "operations": [
+        {"kind": "put", "key": "catalog.json", "content": "{\"description\":\"Catalog\",\"id\":\"demo\",\"links\":[{\"href\":\"scenes/collection.json\",\"rel\":\"child\",\"title\":\"Scenes\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Demo\",\"type\":\"Catalog\"}\n"},
+        {"kind": "put", "key": "scenes/collection.json", "content": "{\"description\":\"Scenes\",\"extent\":{\"spatial\":{\"bbox\":[[-59,-38,-58,-37]]},\"temporal\":{\"interval\":[[null,null]]}},\"id\":\"scenes\",\"license\":\"proprietary\",\"links\":[{\"href\":\"scene-1.json\",\"rel\":\"item\",\"title\":\"Scene from January 2026\",\"type\":\"application/geo+json\"},{\"href\":\"../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Scenes\",\"type\":\"Collection\"}\n"},
+        {"kind": "put", "key": "scenes/scene-1.json", "content": "{\"collection\":\"scenes\",\"geometry\":null,\"id\":\"scene-1\",\"links\":[{\"href\":\"collection.json\",\"rel\":\"collection\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"scene-1.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"properties\":{\"datetime\":\"2026-01-01T00:00:00Z\"},\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"type\":\"Feature\"}\n"}
+      ]
+    }
+  }
+}

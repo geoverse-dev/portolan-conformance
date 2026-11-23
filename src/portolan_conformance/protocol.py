@@ -31,7 +31,7 @@ OPERATIONS = READ_OPERATIONS | {
     ROUNDTRIP_OPERATION,
 }
 VALIDATION_PROFILE_VERSION = "1"
-WRITE_PROFILE_VERSION = "1"
+WRITE_PROFILE_VERSION = "1.1"
 
 
 @dataclass(frozen=True)
@@ -162,7 +162,7 @@ def validate_write_response(response: dict[str, Any]) -> None:
     if result["profile_version"] != WRITE_PROFILE_VERSION:
         raise ValueError("unsupported write profile version")
     if result["spec_version"] != "0.3.0":
-        raise ValueError("write-v1 Round 1 supports spec version 0.3.0")
+        raise ValueError("Write Profile v1.1 supports spec version 0.3.0")
     operations = result["operations"]
     if not isinstance(operations, list):
         raise TypeError("operations must be an array")

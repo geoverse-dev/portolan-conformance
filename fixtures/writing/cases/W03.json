@@ -1,1 +1,91 @@
-{"id":"W03","description":"Nested subcatalog","operation":"plan_write","input":{"spec_version":"0.3.0","documents":[{"key":"catalog.json","document":{"type":"Catalog","stac_version":"1.1.0","id":"demo","title":"Demo catalog","description":"A catalog authored in memory."}},{"key":"vectors/catalog.json","parent_key":"catalog.json","document":{"type":"Catalog","stac_version":"1.1.0","id":"vectors","title":"Vectors","description":"Vector data."}},{"key":"vectors/roads/collection.json","parent_key":"vectors/catalog.json","document":{"type":"Collection","stac_version":"1.1.0","id":"roads","title":"Roads","description":"Road data.","license":"CC-BY-4.0","extent":{"spatial":{"bbox":[[-59,-38,-58,-37]]},"temporal":{"interval":[[null,null]]}}}}]},"tags":["write-v1","round-1"],"expected":{"status":"ok","result":{"profile_version":"1","spec_version":"0.3.0","operations":[{"kind":"put","key":"catalog.json","content":"{\"description\":\"A catalog authored in memory.\",\"id\":\"demo\",\"links\":[{\"href\":\"vectors/catalog.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Demo catalog\",\"type\":\"Catalog\"}\n"},{"kind":"put","key":"vectors/catalog.json","content":"{\"description\":\"Vector data.\",\"id\":\"vectors\",\"links\":[{\"href\":\"roads/collection.json\",\"rel\":\"child\",\"type\":\"application/json\"},{\"href\":\"../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Vectors\",\"type\":\"Catalog\"}\n"},{"kind":"put","key":"vectors/roads/collection.json","content":"{\"description\":\"Road data.\",\"extent\":{\"spatial\":{\"bbox\":[[-59,-38,-58,-37]]},\"temporal\":{\"interval\":[[null,null]]}},\"id\":\"roads\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Roads\",\"type\":\"Collection\"}\n"}]}}}
+{
+  "id": "W03",
+  "description": "Nested subcatalog",
+  "operation": "plan_write",
+  "input": {
+    "spec_version": "0.3.0",
+    "documents": [
+      {
+        "key": "catalog.json",
+        "document": {
+          "type": "Catalog",
+          "stac_version": "1.1.0",
+          "id": "demo",
+          "title": "Demo catalog",
+          "description": "A catalog authored in memory."
+        }
+      },
+      {
+        "key": "vectors/catalog.json",
+        "parent_key": "catalog.json",
+        "document": {
+          "type": "Catalog",
+          "stac_version": "1.1.0",
+          "id": "vectors",
+          "title": "Vectors",
+          "description": "Vector data."
+        }
+      },
+      {
+        "key": "vectors/roads/collection.json",
+        "parent_key": "vectors/catalog.json",
+        "document": {
+          "type": "Collection",
+          "stac_version": "1.1.0",
+          "id": "roads",
+          "title": "Roads",
+          "description": "Road data.",
+          "license": "CC-BY-4.0",
+          "extent": {
+            "spatial": {
+              "bbox": [
+                [
+                  -59,
+                  -38,
+                  -58,
+                  -37
+                ]
+              ]
+            },
+            "temporal": {
+              "interval": [
+                [
+                  null,
+                  null
+                ]
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  "tags": [
+    "write-v1",
+    "round-1"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "profile_version": "1.1",
+      "spec_version": "0.3.0",
+      "operations": [
+        {
+          "kind": "put",
+          "key": "catalog.json",
+          "content": "{\"description\":\"A catalog authored in memory.\",\"id\":\"demo\",\"links\":[{\"href\":\"vectors/catalog.json\",\"rel\":\"child\",\"title\":\"Vectors\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Demo catalog\",\"type\":\"Catalog\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "vectors/catalog.json",
+          "content": "{\"description\":\"Vector data.\",\"id\":\"vectors\",\"links\":[{\"href\":\"roads/collection.json\",\"rel\":\"child\",\"title\":\"Roads\",\"type\":\"application/json\"},{\"href\":\"../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Vectors\",\"type\":\"Catalog\"}\n"
+        },
+        {
+          "kind": "put",
+          "key": "vectors/roads/collection.json",
+          "content": "{\"description\":\"Road data.\",\"extent\":{\"spatial\":{\"bbox\":[[-59,-38,-58,-37]]},\"temporal\":{\"interval\":[[null,null]]}},\"id\":\"roads\",\"license\":\"CC-BY-4.0\",\"links\":[{\"href\":\"../catalog.json\",\"rel\":\"parent\",\"type\":\"application/json\"},{\"href\":\"../../catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"collection.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Roads\",\"type\":\"Collection\"}\n"
+        }
+      ]
+    }
+  }
+}

@@ -19,7 +19,7 @@
             "description": "Catalog",
             "x-vendor": {
               "nested": {
-                "unicode": "\u00e1",
+                "unicode": "á",
                 "null": null,
                 "values": [
                   true,
@@ -36,7 +36,7 @@
   "expected": {
     "status": "ok",
     "result": {
-      "profile_version": "1",
+      "profile_version": "1.1",
       "documents": [
         {
           "key": "catalog.json",
@@ -44,6 +44,11 @@
             "description": "Catalog",
             "id": "demo",
             "links": [
+              {
+                "href": "catalog.json",
+                "rel": "root",
+                "type": "application/json"
+              },
               {
                 "href": "catalog.json",
                 "rel": "self",
@@ -59,7 +64,7 @@
             "x-vendor": {
               "nested": {
                 "null": null,
-                "unicode": "\u00e1",
+                "unicode": "á",
                 "values": [
                   true,
                   1,

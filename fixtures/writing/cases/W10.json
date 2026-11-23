@@ -1,1 +1,49 @@
-{"id":"W10","description":"Unknown extension URI and fields are preserved","operation":"plan_write","input":{"spec_version":"0.3.0","documents":[{"key":"catalog.json","document":{"type":"Catalog","stac_version":"1.1.0","id":"extended","title":"Demo catalog","description":"A catalog authored in memory.","stac_extensions":["https://example.org/extension/v1/schema.json"],"example:config":{"mode":"precise","values":[1,null,"á"]}}}]},"tags":["write-v1","round-1"],"expected":{"status":"ok","result":{"profile_version":"1","spec_version":"0.3.0","operations":[{"kind":"put","key":"catalog.json","content":"{\"description\":\"A catalog authored in memory.\",\"example:config\":{\"mode\":\"precise\",\"values\":[1,null,\"á\"]},\"id\":\"extended\",\"links\":[{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://example.org/extension/v1/schema.json\",\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Demo catalog\",\"type\":\"Catalog\"}\n"}]}}}
+{
+  "id": "W10",
+  "description": "Unknown extension URI and fields are preserved",
+  "operation": "plan_write",
+  "input": {
+    "spec_version": "0.3.0",
+    "documents": [
+      {
+        "key": "catalog.json",
+        "document": {
+          "type": "Catalog",
+          "stac_version": "1.1.0",
+          "id": "extended",
+          "title": "Demo catalog",
+          "description": "A catalog authored in memory.",
+          "stac_extensions": [
+            "https://example.org/extension/v1/schema.json"
+          ],
+          "example:config": {
+            "mode": "precise",
+            "values": [
+              1,
+              null,
+              "á"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "tags": [
+    "write-v1",
+    "round-1"
+  ],
+  "expected": {
+    "status": "ok",
+    "result": {
+      "profile_version": "1.1",
+      "spec_version": "0.3.0",
+      "operations": [
+        {
+          "kind": "put",
+          "key": "catalog.json",
+          "content": "{\"description\":\"A catalog authored in memory.\",\"example:config\":{\"mode\":\"precise\",\"values\":[1,null,\"á\"]},\"id\":\"extended\",\"links\":[{\"href\":\"catalog.json\",\"rel\":\"root\",\"type\":\"application/json\"},{\"href\":\"catalog.json\",\"rel\":\"self\",\"type\":\"application/json\"}],\"stac_extensions\":[\"https://example.org/extension/v1/schema.json\",\"https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json\"],\"stac_version\":\"1.1.0\",\"title\":\"Demo catalog\",\"type\":\"Catalog\"}\n"
+        }
+      ]
+    }
+  }
+}
