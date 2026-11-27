@@ -29,11 +29,6 @@ FIXTURES = SOURCE_FIXTURES if SOURCE_FIXTURES.is_dir() else INSTALLED_FIXTURES
 
 
 def main(argv: list[str] | None = None) -> int:
-    effective_argv = sys.argv[1:] if argv is None else argv
-    if effective_argv and effective_argv[0] == "smoke":
-        from .external_smoke import smoke_main
-
-        return smoke_main(effective_argv[1:])
     parser = argparse.ArgumentParser(description="Portolan SDK conformance suites")
     parser.add_argument("run", nargs="?", choices=["run"], default="run")
     parser.add_argument(
@@ -52,7 +47,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--report", type=Path, help="Write machine-readable JSON report"
     )
-    args = parser.parse_args(effective_argv)
+    args = parser.parse_args(argv)
     if args.timeout <= 0:
         parser.error("--timeout must be positive")
     command = shlex.split(args.adapter)

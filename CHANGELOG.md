@@ -2,10 +2,6 @@
 
 ## Unreleased
 
-- Add a non-normative external catalog smoke runner and manifest.
-- Capture mutable catalog roots once for comparison across SDK adapters.
-- Add a weekly central observation workflow for released Python and Java SDKs.
-
 ## 0.3.0 — 2026-11-23
 
 - Add Write Profile v1.1 structural-link requirements.
