@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Add basic resource-resolution coverage for truncated JSON and unexpected media types.
+- Add finite-depth traversal and fixture-root containment cases.
+- Add a deterministic delayed-response primitive without defining a public SDK timeout API.
+
 ## 0.4.0 — 2026-11-27
 
 - Add Resource Resolution Profile v1 with deterministic local HTTP cases.

@@ -18,6 +18,10 @@ An implementation must:
 - return `NOT_FOUND` for HTTP 404;
 - return `READ_ERROR` for HTTP 403 and HTTP 500;
 - return `INVALID_JSON` for malformed JSON.
+- return `INVALID_JSON` for a truncated JSON response;
+- read valid JSON when the server reports `text/plain`;
+- traverse a finite chain of eight linked catalogs;
+- keep the fixture HTTP root isolated from encoded parent-path requests.
 
 Run the profile with:
 
@@ -30,4 +34,7 @@ portolan-conformance run \
 
 ## Limits
 
-Version 1 does not test timeouts, truncated responses, media types, or local root containment. These cases need explicit cross-language behavior before they become requirements.
+Version 1 provides basic coverage for delayed responses, truncated JSON, media types,
+finite depth, and fixture-server containment. It does not require a shared SDK timeout
+option, a universal depth limit, strict media-type rejection, or a filesystem sandbox.
+Those behaviors need explicit cross-language API decisions.

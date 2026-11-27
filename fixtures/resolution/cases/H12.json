@@ -1,0 +1,8 @@
+{
+  "id": "H12",
+  "operation": "inspect",
+  "uri": "${HTTP_CATALOGS}/%2e%2e/outside.json",
+  "tags": ["resource-resolution-v1", "http", "containment"],
+  "description": "Do not serve an encoded path outside the fixture root.",
+  "expected": {"status":"error","error":{"code":"NOT_FOUND"}}
+}

@@ -1,0 +1,8 @@
+{
+  "id": "H10",
+  "operation": "inspect",
+  "uri": "${HTTP_CATALOGS}/__media/text-plain",
+  "tags": ["resource-resolution-v1", "http", "media-type"],
+  "description": "Read valid catalog JSON when HTTP reports text/plain.",
+  "expected": {"status":"ok","result":{"type":"Catalog","id":"wrong-media-type","title":"Wrong media type","description":"Valid JSON served as text/plain","stac_version":"1.1.0","stac_extensions":[]}}
+}

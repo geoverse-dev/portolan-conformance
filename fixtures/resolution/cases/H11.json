@@ -1,0 +1,8 @@
+{
+  "id": "H11",
+  "operation": "collections",
+  "uri": "${HTTP_CATALOGS}/deep/catalog-0.json",
+  "tags": ["resource-resolution-v1", "http", "depth"],
+  "description": "Traverse a finite chain of eight child catalogs.",
+  "expected": {"status":"ok","result":{"entries":[{"id":"deep-collection","uri":"${HTTP_CATALOGS}/deep/collection.json"}]}}
+}

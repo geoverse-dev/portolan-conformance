@@ -1,5 +1,6 @@
 import json
 import sys
+import time
 from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import urlopen
@@ -258,8 +259,8 @@ def test_write_response_rejects_unsafe_or_unsorted_operations():
 def test_resource_resolution_profile_has_complete_case_matrix():
     cases = load_cases(ROOT / "fixtures/resolution/cases")
 
-    assert [case.id for case in cases] == [f"H{number:02d}" for number in range(1, 9)]
-    assert all(case.operation in {"inspect", "links"} for case in cases)
+    assert [case.id for case in cases] == [f"H{number:02d}" for number in range(1, 13)]
+    assert all(case.operation in {"inspect", "links", "collections"} for case in cases)
     assert all("resource-resolution-v1" in case.tags for case in cases)
 
 
@@ -308,3 +309,29 @@ def test_fixture_server_exposes_deterministic_transport_failures():
     assert forbidden.value.code == 403
     assert missing.value.code == 404
     assert server_error.value.code == 500
+
+
+def test_fixture_server_exposes_bounded_delay_and_truncated_body():
+    with fixture_http_server(ROOT / "fixtures/resolution/catalogs") as base_url:
+        started = time.monotonic()
+        with urlopen(f"{base_url}/__delay/basic") as response:
+            assert response.status == 200
+        elapsed = time.monotonic() - started
+
+        with urlopen(f"{base_url}/__body/truncated") as response:
+            assert response.headers.get_content_type() == "application/json"
+            assert response.read() == b'{"type":"Catalog"'
+
+    assert elapsed >= 0.05
+
+
+def test_fixture_server_does_not_serve_paths_outside_catalog_root(tmp_path):
+    catalogs = tmp_path / "catalogs"
+    catalogs.mkdir()
+    (tmp_path / "outside.json").write_text("{}", encoding="utf-8")
+
+    with fixture_http_server(catalogs) as base_url:
+        with pytest.raises(HTTPError) as escaped:
+            urlopen(f"{base_url}/%2e%2e/outside.json")
+
+    assert escaped.value.code == 404

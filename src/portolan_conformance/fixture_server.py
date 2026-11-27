@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import threading
+import time
 from contextlib import contextmanager
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -12,6 +13,31 @@ from typing import Iterator
 
 class _Handler(SimpleHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
+        if self.path == "/__delay/basic":
+            time.sleep(0.05)
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(b"{}")
+            return
+        if self.path == "/__body/truncated":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(b'{"type":"Catalog"')
+            return
+        if self.path == "/__media/text-plain":
+            body = (
+                b'{"type":"Catalog","stac_version":"1.1.0",'
+                b'"id":"wrong-media-type","title":"Wrong media type",'
+                b'"description":"Valid JSON served as text/plain","links":[]}'
+            )
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+            return
         if self.path == "/__status/403":
             self.send_error(403, "Forbidden")
             return

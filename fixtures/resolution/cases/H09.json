@@ -1,0 +1,8 @@
+{
+  "id": "H09",
+  "operation": "inspect",
+  "uri": "${HTTP_CATALOGS}/__body/truncated",
+  "tags": ["resource-resolution-v1", "http", "truncated", "invalid-json"],
+  "description": "Map a truncated JSON response to INVALID_JSON.",
+  "expected": {"status":"error","error":{"code":"INVALID_JSON"}}
+}
