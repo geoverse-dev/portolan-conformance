@@ -1,0 +1,12 @@
+{
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cycle-collection",
+  "description": "Collection reached through a cycle",
+  "license": "proprietary",
+  "extent": {
+    "spatial": {"bbox": [[-180, -90, 180, 90]]},
+    "temporal": {"interval": [[null, null]]}
+  },
+  "links": []
+}

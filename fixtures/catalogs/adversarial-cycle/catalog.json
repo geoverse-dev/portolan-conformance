@@ -1,0 +1,9 @@
+{
+  "type": "Catalog",
+  "stac_version": "1.1.0",
+  "id": "cycle-root",
+  "description": "Cycle root",
+  "links": [
+    {"rel": "child", "href": "child.json", "type": "application/json"}
+  ]
+}

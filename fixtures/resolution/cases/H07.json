@@ -1,0 +1,8 @@
+{
+  "id": "H07",
+  "operation": "inspect",
+  "uri": "${HTTP_CATALOGS}/encoded/space%20name/catalog.json",
+  "tags": ["resource-resolution-v1", "http", "percent-encoding", "unicode"],
+  "description": "Read a percent-encoded path and preserve a Unicode identifier.",
+  "expected": {"status":"ok","result":{"type":"Catalog","id":"café-東京","title":"Encoded path","description":"Percent-encoded path fixture","stac_version":"1.1.0","stac_extensions":[]}}
+}

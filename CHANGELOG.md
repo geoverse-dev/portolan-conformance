@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Add Resource Resolution Profile v1 with deterministic local HTTP cases.
+- Add Compatibility Profile v1 for Portolan 0.2.0 and 0.3.0 read behavior.
+- Package all new fixtures and run both profiles in the harness self-check.
+- Add adversarial read cases for catalog cycles and duplicate collection IDs.
+
 ## 0.3.0 — 2026-11-23
 
 - Add Write Profile v1.1 structural-link requirements.

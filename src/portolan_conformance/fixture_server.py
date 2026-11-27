@@ -12,6 +12,20 @@ from typing import Iterator
 
 class _Handler(SimpleHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
+        if self.path == "/__status/403":
+            self.send_error(403, "Forbidden")
+            return
+        if self.path == "/__status/404":
+            self.send_error(404, "Not Found")
+            return
+        if self.path == "/__status/500":
+            self.send_error(500, "Internal Server Error")
+            return
+        if self.path == "/__redirect/final-base":
+            self.send_response(302)
+            self.send_header("Location", "/redirected/catalog.json")
+            self.end_headers()
+            return
         if self.path == "/redirect/nested-items":
             self.send_response(302)
             self.send_header("Location", "/nested-items/collection.json")

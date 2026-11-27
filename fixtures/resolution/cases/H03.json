@@ -1,0 +1,8 @@
+{
+  "id": "H03",
+  "operation": "inspect",
+  "uri": "${HTTP_CATALOGS}/__status/404",
+  "tags": ["resource-resolution-v1", "http", "not-found"],
+  "description": "Map HTTP 404 to NOT_FOUND.",
+  "expected": {"status":"error","error":{"code":"NOT_FOUND"}}
+}

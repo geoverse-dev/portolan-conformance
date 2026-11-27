@@ -1,0 +1,6 @@
+{
+  "id":"C05","operation":"document","uri":"${CATALOGS}/v02/catalog.json",
+  "tags":["compatibility-v1","0.2.0","raw-json"],
+  "description":"Preserve unknown fields in a Portolan 0.2.0 document.",
+  "expected":{"status":"ok","result":{"document":{"type":"Catalog","stac_version":"1.1.0","stac_extensions":["https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json"],"id":"compat-v02","title":"Compatibility 0.2.0","description":"Portolan 0.2.0 read fixture","x-extra":{"enabled":true,"count":2},"links":[]}}}
+}

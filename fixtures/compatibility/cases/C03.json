@@ -1,0 +1,6 @@
+{
+  "id":"C03","operation":"inspect","uri":"${CATALOGS}/missing/catalog.json",
+  "tags":["compatibility-v1","missing-profile","inspect"],
+  "description":"Read STAC metadata when no Portolan profile is declared.",
+  "expected":{"status":"ok","result":{"type":"Catalog","id":"compat-missing","title":"No Portolan profile","description":"Readable STAC without a declared Portolan profile","stac_version":"1.1.0","stac_extensions":[]}}
+}

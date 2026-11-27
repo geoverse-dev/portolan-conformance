@@ -87,7 +87,7 @@ It must not contain fixture names or expected answers.
 
 A Java SDK can expose detailed findings from `inspect()` and let `openStrict()` reject errors.
 Its adapter maps those findings into the normalized arrays.
-Future Go and Rust SDKs can use idiomatic result types and apply the same mapping.
+Future TypeScript and Rust SDKs can use idiomatic result types and apply the same mapping.
 
 Run the profile with this command:
 

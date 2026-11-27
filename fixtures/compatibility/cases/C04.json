@@ -1,0 +1,6 @@
+{
+  "id":"C04","operation":"inspect","uri":"${CATALOGS}/unknown/catalog.json",
+  "tags":["compatibility-v1","unknown-profile","inspect"],
+  "description":"Read metadata even when validation does not support its profile.",
+  "expected":{"status":"ok","result":{"type":"Catalog","id":"compat-unknown","title":"Unknown Portolan profile","description":"Readable metadata with an unknown Portolan profile","stac_version":"1.1.0","stac_extensions":["https://schemas.portolan-sdi.org/portolan/v9.9.9/schema.json"]}}
+}

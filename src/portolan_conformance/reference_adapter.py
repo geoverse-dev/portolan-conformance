@@ -7,6 +7,7 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+from urllib.error import HTTPError
 from urllib.parse import urljoin, urlsplit, unquote
 from urllib.request import urlopen
 
@@ -27,6 +28,10 @@ def read_document(uri: str) -> tuple[dict, str]:
         raise ValueError("Fixture adapter supports file:// and HTTP only")
     except FileNotFoundError as exc:
         raise LookupError("NOT_FOUND") from exc
+    except HTTPError as exc:
+        if exc.code == 404:
+            raise LookupError("NOT_FOUND") from exc
+        raise OSError("READ_ERROR") from exc
     except json.JSONDecodeError as exc:
         raise ValueError("INVALID_JSON") from exc
 

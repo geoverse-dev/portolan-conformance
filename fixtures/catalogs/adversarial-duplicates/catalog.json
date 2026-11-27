@@ -1,0 +1,10 @@
+{
+  "type": "Catalog",
+  "stac_version": "1.1.0",
+  "id": "duplicate-root",
+  "description": "Root with duplicate collection identifiers",
+  "links": [
+    {"rel": "child", "href": "a/collection.json", "type": "application/json"},
+    {"rel": "child", "href": "b/collection.json", "type": "application/json"}
+  ]
+}

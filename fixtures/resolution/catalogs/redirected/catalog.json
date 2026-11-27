@@ -1,0 +1,1 @@
+{"type":"Catalog","stac_version":"1.1.0","id":"redirected-root","title":"Redirected root","description":"Redirect target","links":[{"rel":"child","href":"./child.json?token=abc#section","type":"application/json","title":"Redirect child"}]}

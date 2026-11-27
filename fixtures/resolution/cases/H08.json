@@ -1,0 +1,8 @@
+{
+  "id": "H08",
+  "operation": "links",
+  "uri": "${HTTP_CATALOGS}/redirected/catalog.json?source=acceptance#root",
+  "tags": ["resource-resolution-v1", "http", "query", "fragment"],
+  "description": "Resolve a relative link from a document URL with a query and fragment.",
+  "expected": {"status":"ok","result":{"entries":[{"rel":"child","href":"./child.json?token=abc#section","resolved_href":"${HTTP_CATALOGS}/redirected/child.json?token=abc#section","type":"application/json","title":"Redirect child","extra_fields":{}}]}}
+}

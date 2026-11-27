@@ -1,0 +1,1 @@
+{"type":"Catalog","stac_version":"1.1.0","stac_extensions":["https://schemas.portolan-sdi.org/portolan/v0.3.0/schema.json"],"id":"compat-v03","title":"Compatibility 0.3.0","description":"Portolan 0.3.0 read fixture","x-extra":{"nullable":null,"decimal":1.25,"flag":false},"links":[]}

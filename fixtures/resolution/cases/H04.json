@@ -1,0 +1,8 @@
+{
+  "id": "H04",
+  "operation": "inspect",
+  "uri": "${HTTP_CATALOGS}/__status/403",
+  "tags": ["resource-resolution-v1", "http", "forbidden"],
+  "description": "Map HTTP 403 to READ_ERROR.",
+  "expected": {"status":"error","error":{"code":"READ_ERROR"}}
+}

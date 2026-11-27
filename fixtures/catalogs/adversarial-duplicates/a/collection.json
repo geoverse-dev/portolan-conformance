@@ -1,0 +1,12 @@
+{
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "shared-id",
+  "description": "First collection with a shared identifier",
+  "license": "proprietary",
+  "extent": {
+    "spatial": {"bbox": [[-180, -90, 180, 90]]},
+    "temporal": {"interval": [[null, null]]}
+  },
+  "links": []
+}

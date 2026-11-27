@@ -4,3 +4,5 @@ __pycache__/
 *.egg-info/
 dist/
 report.json
+resource-resolution-report.json
+compatibility-report.json

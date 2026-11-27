@@ -39,6 +39,9 @@ All operations and field schemas are defined in [SDK Read Profile v1](docs/sdk-i
 The [Metadata Validation Profile](docs/metadata-validation-profile.md) defines a separate metadata-only contract.
 It covers version-specific Portolan 0.2.0 and 0.3.0 behavior.
 
+The [Resource Resolution Profile v1](docs/resource-resolution-profile.md) checks deterministic HTTP transport and URI resolution behavior.
+The [Compatibility Profile v1](docs/compatibility-profile.md) protects read behavior across Portolan 0.2.0 and 0.3.0 documents.
+
 The [SDK Write Profile v1.1](docs/write-profile.md) defines storage-independent authoring plans.
 Its 44 cases cover planning, editing, structural links, documentation, and round trips
 for Portolan 0.3.0.
@@ -47,6 +50,6 @@ for Portolan 0.3.0.
 
 ## Scope and limitations
 
-The shipped cases cover a useful **metadata-only baseline**, not every possible spec variant. Some fixtures intentionally reference nonexistent data files: this is fine for SDK reading behavior but does not make the fixtures valid published Portolan datasets. The fixture adapter does not fetch assets. Expand the matrix with version-pinned, validator-checked real catalogs and local HTTP tests before calling the SDKs fully conformant.
+The shipped cases cover a useful **metadata-only baseline**, not every possible spec variant. Some fixtures intentionally reference nonexistent data files. This is valid for SDK behavior tests but does not make the fixtures valid published Portolan catalogs. The fixture adapter does not fetch assets. External catalogs can provide acceptance evidence, but they are not an oracle for expected behavior.
 
 Do not claim `PASS` on the baseline proves complete Portolan spec compliance. The report concerns only the selected SDK behavior cases.

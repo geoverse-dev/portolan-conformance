@@ -1,0 +1,8 @@
+{
+  "id": "H06",
+  "operation": "inspect",
+  "uri": "${HTTP_CATALOGS}/malformed/catalog.json",
+  "tags": ["resource-resolution-v1", "http", "invalid-json"],
+  "description": "Map malformed HTTP JSON to INVALID_JSON.",
+  "expected": {"status":"error","error":{"code":"INVALID_JSON"}}
+}

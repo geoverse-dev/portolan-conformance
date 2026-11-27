@@ -36,7 +36,13 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         "--profile",
-        choices=("read", "metadata-validation", "write"),
+        choices=(
+            "read",
+            "resource-resolution",
+            "compatibility",
+            "metadata-validation",
+            "write",
+        ),
         default="read",
         help="Behavior profile to run",
     )
@@ -58,6 +64,10 @@ def main(argv: list[str] | None = None) -> int:
         profile_root /= "validation"
     elif args.profile == "write":
         profile_root /= "writing"
+    elif args.profile == "resource-resolution":
+        profile_root /= "resolution"
+    elif args.profile == "compatibility":
+        profile_root /= "compatibility"
     cases_root = args.cases or profile_root / "cases"
     catalogs_root = args.catalogs or profile_root / "catalogs"
     cases = load_cases(cases_root)

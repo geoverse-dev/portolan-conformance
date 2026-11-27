@@ -17,4 +17,7 @@ jobs:
         if: always()
         with:
           name: conformance-selftest-report
-          path: report.json
+          path: |
+            report.json
+            resource-resolution-report.json
+            compatibility-report.json

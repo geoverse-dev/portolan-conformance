@@ -1,0 +1,6 @@
+{
+  "id":"C01","operation":"inspect","uri":"${CATALOGS}/v02/catalog.json",
+  "tags":["compatibility-v1","0.2.0","inspect"],
+  "description":"Inspect a Portolan 0.2.0 catalog.",
+  "expected":{"status":"ok","result":{"type":"Catalog","id":"compat-v02","title":"Compatibility 0.2.0","description":"Portolan 0.2.0 read fixture","stac_version":"1.1.0","stac_extensions":["https://schemas.portolan-sdi.org/portolan/v0.2.0/schema.json"]}}
+}

@@ -1,6 +1,8 @@
 import json
 import sys
 from pathlib import Path
+from urllib.error import HTTPError
+from urllib.request import urlopen
 
 import pytest
 
@@ -88,6 +90,17 @@ def test_nested_item_fixture_exposes_direct_and_recursive_operations():
         entry["id"]
         for entry in cases["items-recursive-nested"].expected["result"]["entries"]
     ] == ["observation-2025"]
+
+
+def test_adversarial_read_cases_cover_cycles_and_duplicate_ids():
+    cases = {case.id: case for case in load_cases(ROOT / "fixtures/cases")}
+
+    assert cases["collections-cycle"].operation == "collections"
+    assert cases["collections-duplicate-ids"].operation == "collections"
+    assert all(
+        "adversarial" in cases[case_id].tags
+        for case_id in ("collections-cycle", "collections-duplicate-ids")
+    )
 
 
 def test_metadata_validation_cases_have_version_matrix():
@@ -240,3 +253,58 @@ def test_write_response_rejects_unsafe_or_unsorted_operations():
                 },
             }
         )
+
+
+def test_resource_resolution_profile_has_complete_case_matrix():
+    cases = load_cases(ROOT / "fixtures/resolution/cases")
+
+    assert [case.id for case in cases] == [f"H{number:02d}" for number in range(1, 9)]
+    assert all(case.operation in {"inspect", "links"} for case in cases)
+    assert all("resource-resolution-v1" in case.tags for case in cases)
+
+
+def test_compatibility_profile_has_version_matrix():
+    cases = load_cases(ROOT / "fixtures/compatibility/cases")
+
+    assert [case.id for case in cases] == [f"C{number:02d}" for number in range(1, 7)]
+    assert {"0.2.0", "0.3.0", "missing-profile", "unknown-profile"}.issubset(
+        {tag for case in cases for tag in case.tags}
+    )
+
+
+def test_cli_selects_resource_resolution_profile(monkeypatch):
+    seen = []
+
+    def fake_invoke(command, operation, uri, *, timeout):
+        seen.append((operation, uri))
+        return {"status": "error", "error": {"code": "READ_ERROR"}}
+
+    monkeypatch.setattr("portolan_conformance.cli.invoke", fake_invoke)
+    result = main(
+        [
+            "run",
+            "--adapter",
+            "unused",
+            "--profile",
+            "resource-resolution",
+            "--tag",
+            "server-error",
+        ]
+    )
+
+    assert result == 0
+    assert seen and all(uri.startswith("http://127.0.0.1:") for _, uri in seen)
+
+
+def test_fixture_server_exposes_deterministic_transport_failures():
+    with fixture_http_server(ROOT / "fixtures/resolution/catalogs") as base_url:
+        with pytest.raises(HTTPError) as forbidden:
+            urlopen(f"{base_url}/__status/403")
+        with pytest.raises(HTTPError) as missing:
+            urlopen(f"{base_url}/__status/404")
+        with pytest.raises(HTTPError) as server_error:
+            urlopen(f"{base_url}/__status/500")
+
+    assert forbidden.value.code == 403
+    assert missing.value.code == 404
+    assert server_error.value.code == 500

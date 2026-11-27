@@ -1,0 +1,18 @@
+{
+  "id": "collections-cycle",
+  "operation": "collections",
+  "uri": "${CATALOGS}/adversarial-cycle/catalog.json",
+  "tags": ["read-profile-v1", "adversarial", "cycle"],
+  "description": "Stop a catalog cycle and return each linked collection once.",
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "id": "cycle-collection",
+          "uri": "${CATALOGS}/adversarial-cycle/collection.json"
+        }
+      ]
+    }
+  }
+}

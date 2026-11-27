@@ -1,0 +1,22 @@
+{
+  "id": "collections-duplicate-ids",
+  "operation": "collections",
+  "uri": "${CATALOGS}/adversarial-duplicates/catalog.json",
+  "tags": ["read-profile-v1", "adversarial", "duplicate-id"],
+  "description": "Preserve collections with the same ID at distinct document URIs.",
+  "expected": {
+    "status": "ok",
+    "result": {
+      "entries": [
+        {
+          "id": "shared-id",
+          "uri": "${CATALOGS}/adversarial-duplicates/a/collection.json"
+        },
+        {
+          "id": "shared-id",
+          "uri": "${CATALOGS}/adversarial-duplicates/b/collection.json"
+        }
+      ]
+    }
+  }
+}
