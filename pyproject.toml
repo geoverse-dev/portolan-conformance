@@ -46,6 +46,7 @@ where = ["src"]
 "share/portolan-conformance/fixtures/validation/catalogs/v03-valid" = ["fixtures/validation/catalogs/v03-valid/*.json"]
 "share/portolan-conformance/fixtures/writing" = ["fixtures/writing/*.json"]
 "share/portolan-conformance/fixtures/writing/cases" = ["fixtures/writing/cases/*.json"]
+"share/portolan-conformance/external-catalogs" = ["external-catalogs/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

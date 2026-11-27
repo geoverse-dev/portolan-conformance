@@ -45,6 +45,11 @@ for Portolan 0.3.0.
 
 [Known SDKs](docs/known-sdks.md) lists current implementations and their conformance commands.
 
+The [external catalog smoke runner](docs/external-catalog-smoke.md) observes
+mutable catalogs through released SDK adapters. It is deliberately separate
+from the behavioral profiles and never treats an external catalog as a source
+of normative expectations.
+
 ## Scope and limitations
 
 The shipped cases cover a useful **metadata-only baseline**, not every possible spec variant. Some fixtures intentionally reference nonexistent data files: this is fine for SDK reading behavior but does not make the fixtures valid published Portolan datasets. The fixture adapter does not fetch assets. Expand the matrix with version-pinned, validator-checked real catalogs and local HTTP tests before calling the SDKs fully conformant.

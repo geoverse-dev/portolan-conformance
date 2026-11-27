@@ -1,0 +1,49 @@
+{
+  "manifest_version": "1",
+  "catalogs": [
+    {
+      "id": "portolan-registry",
+      "url": "https://raw.githubusercontent.com/portolan-sdi/portolan-registry/refs/heads/main/exports/catalogs.json",
+      "mutable": true,
+      "operations": [
+        "document",
+        "inspect",
+        "links"
+      ],
+      "notes": "Discovery source only. Registry status and counts are dated observations, not normative expectations."
+    },
+    {
+      "id": "geomermaids-root",
+      "url": "https://catalog.geomermaids.com/catalog.json",
+      "mutable": true,
+      "operations": [
+        "document",
+        "inspect",
+        "links"
+      ],
+      "notes": "Mutable root catalog. Its current children and declared profile are observations only."
+    },
+    {
+      "id": "geomermaids-osm-na",
+      "url": "https://parquetry.geomermaids.com/osm/catalog/catalog.json",
+      "mutable": true,
+      "operations": [
+        "document",
+        "inspect",
+        "links"
+      ],
+      "notes": "Rebuilt regularly. No current collection, feature, asset, or byte count is an SDK expectation."
+    },
+    {
+      "id": "dhis2-nepal",
+      "url": "https://geoservice.dhis2.org/nepal/stac/catalog.json",
+      "mutable": true,
+      "operations": [
+        "document",
+        "inspect",
+        "links"
+      ],
+      "notes": "Externally managed catalog. Availability and normative validity can change independently of an SDK."
+    }
+  ]
+}
