@@ -10,12 +10,12 @@ Each SDK pins a conformance revision in its own CI workflow.
 
 ## SDK status
 
-The following releases pin `portolan-conformance` `v0.3.0`.
+The following releases pin `portolan-conformance` `v0.4.0`.
 
-| SDK | Release | Read Profile v1 | Write Profile v1.1 | Metadata Validation Profile v1 | Local command |
-|---|---|---|---|---|---|
-| [`portolan-python`](https://github.com/geoverse-dev/portolan-python) | `v1.0.0rc3` | 29/29 | 44/44 | Not implemented; use Rashid | `make check-conformance` |
-| [`portolan-java`](https://github.com/geoverse-dev/portolan-java) | `v1.0.0-RC2` | 29/29 | 44/44 | 8/8 | `make check-conformance` |
+| SDK | Release | Read | Resource resolution | Compatibility | Write | Metadata validation | Local command |
+|---|---|---:|---:|---:|---:|---:|---|
+| [`portolan-python`](https://github.com/geoverse-dev/portolan-python) | `v1.0.0rc4` | 31/31 | 8/8 | 6/6 | 44/44 | Use Rashid | `make check-conformance` |
+| [`portolan-java`](https://github.com/geoverse-dev/portolan-java) | `v1.0.0-RC3` | 31/31 | 8/8 | 6/6 | 44/44 | 8/8 | `make check-conformance` |
 
 A profile pass applies only to the cases in the pinned conformance revision.
 It does not prove full Portolan catalog conformance.
@@ -24,19 +24,21 @@ Use [`rashid`](https://github.com/portolan-sdi/rashid) to validate a catalog.
 ## Validate portolan-python
 
 Install the SDK development dependencies.
-The Make target downloads `portolan-conformance` version `v0.3.0` with `uvx`.
+The Make target downloads `portolan-conformance` version `v0.4.0` with `uvx`.
 Then it runs:
 
 ```bash
 make check-conformance
 ```
 
-The target runs Read Profile v1 and Write Profile v1.1 through
+The target runs Read, Resource Resolution, Compatibility, and Write profiles through
 `tests/conformance_adapter.py`.
-It writes `read-profile-report.json` and `write-profile-report.json`.
+It writes one JSON report for each profile.
 
-The read profile has 29 cases.
-It covers nested collection items, redirects, and strict JSON types.
+The read profile has 31 cases.
+It covers nested items, redirects, strict JSON types, cycles, and duplicate IDs.
+Resource Resolution has eight deterministic HTTP cases.
+Compatibility has six Portolan 0.2.0 and 0.3.0 read cases.
 The write profile has 44 cases.
 It covers deterministic plans, round trips, complete structural links, and
 caller-managed `README.md` and `AGENTS.md` files.
@@ -48,6 +50,8 @@ Use the individual targets to run one profile:
 
 ```bash
 make check-conformance-read
+make check-conformance-resource-resolution
+make check-conformance-compatibility
 make check-conformance-write
 ```
 
@@ -60,22 +64,24 @@ make check-conformance \
   CONFORMANCE_WRITE_REPORT=/tmp/portolan-python-write.json
 ```
 
-`make check-conformance-all` is an explicit alias for the same two-profile check.
+`make check-conformance-all` is an explicit alias for the same four-profile check.
 
 ## Validate portolan-java
 
 Install Java 17 and Maven.
-The Make target downloads `portolan-conformance` version `v0.3.0` with `uvx`.
+The Make target downloads `portolan-conformance` version `v0.4.0` with `uvx`.
 Then it runs:
 
 ```bash
 make check-conformance
 ```
 
-The target builds the test adapter and runs all three supported profiles.
+The target builds the test adapter and runs all five supported profiles.
 It writes these reports:
 
 - `target/portolan-conformance-read.json`
+- `target/portolan-conformance-resource-resolution.json`
+- `target/portolan-conformance-compatibility.json`
 - `target/portolan-conformance-metadata.json`
 - `target/portolan-conformance-write.json`
 
@@ -83,6 +89,8 @@ Use the individual targets to run one profile:
 
 ```bash
 make check-conformance-read
+make check-conformance-resource-resolution
+make check-conformance-compatibility
 make check-conformance-metadata
 make check-conformance-write
 ```
@@ -94,7 +102,7 @@ make check-conformance \
   CONFORMANCE='uv run --project ../portolan-conformance portolan-conformance'
 ```
 
-`make check-conformance-all` is an explicit alias for the same three-profile check.
+`make check-conformance-all` is an explicit alias for the same five-profile check.
 
 ## Add another SDK
 
